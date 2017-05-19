@@ -11,7 +11,8 @@ Gem::Specification.new do |spec|
 
   spec.summary         = "Download mangas hosted in mangahost.net"
   # spec.description     = File.read(File.join(File.dirname(__FILE__), 'README.md'))
-  spec.description     = "Download manga hosted in mangahost.net"
+  spec.description     = "Download any manga hosted in mangahost.net with the option to search" +
+    " and select any chapters or range of chapters"
   spec.homepage      = ""
   spec.license       = "MIT"
 
