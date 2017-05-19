@@ -10,10 +10,13 @@ end
 task :default => :test
 
 desc "change to second branch"
-task :second { `git checkout second` }
+task :second { system "git checkout second" }
 
 desc "change to master branch"
-task :master { `git checkout master` }
+task :master { system "git checkout master" }
 
 desc "exec the app"
-task :exe {`ruby -Ilib exe/mangad grabriel`}
+task :exe {system "ruby -Ilib exe/mangad grabriel"}
+
+desc "console with app loaded"
+task :console {system "bundle exec bin/console"}
