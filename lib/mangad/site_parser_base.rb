@@ -1,7 +1,7 @@
 require 'mangad/options'
 require 'ruby-progressbar'
 require 'open-uri'
-require 'pry'
+# require 'pry'
 require 'rainbow'
 
 module Mangad

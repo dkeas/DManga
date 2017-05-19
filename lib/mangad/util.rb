@@ -1,5 +1,4 @@
 module Mangad
-  VERSION = "0.0.1"
   class MangaNotFoundError < RuntimeError
   end
 
@@ -11,5 +10,4 @@ module Mangad
   def self.print_feedback(str)
     puts Rainbow(str).magenta.bright
   end
-
 end
