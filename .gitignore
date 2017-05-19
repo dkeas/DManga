@@ -1,0 +1,15 @@
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+# ignore dir old
+/old/
+test/files/**
+!onepunch-search.html
+!onepunch-chapters.html
+!tomo-chapters.html

@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+
+require 'openssl'
+require 'rainbow'
+require 'net/http'
+require 'mangad/util'
+require 'mangad/mangahost_parser'
+
+#main #############
+begin
+
+  mangahost = Mangad::MangaHostParser.new(ARGV)
+  mangahost.download
+  print_feedback "\nTodos os download concluidos"
+
+rescue URI::InvalidURIError => uri_error
+  Mangad::print_error("Nome do manga não deve conter acentos, cecedilha ou simbolos", 
+                      uri_error)
+
+rescue Errno::ECONNRESET => con_error
+  Mangad::print_error("Não foi possivel conectar a internet",
+                      con_error)
+
+rescue OpenURI::HTTPError => http_error
+  Mangad::print_error("Servidor recusando conexao",
+                      http_error)
+
+rescue Mangad::MangaNotFoundError => manga_error
+  puts Rainbow("\t#{manga_error}").lightcoral.bright
+  Mangad::print_feedback Rainbow("\tExiting").blue
+
+rescue Net::ReadTimeout => timeout_error
+  Mangad::print_error("Site demorou demais para responder",
+                      timeout_error)
+
+rescue Net::OpenTimeout => timeout_error
+  Mangad::print_error("Site demorou demais para responder",
+                      timeout_error)
+
+rescue SocketError => sock_error
+  Mangad::print_error("Nao foi possivel conectar a internet",
+                      sock_error)
+
+rescue OpenSSL::SSL::SSLError => ssl_error
+  Mangad::print_error("Não foi possivel conectar a internet",
+                      ssl_error)
+
+rescue  Errno::ENETUNREACH => error
+  Mangad::print_error("Não foi possivel conectar a internet",
+                      error)
+
+rescue Interrupt
+  puts Rainbow("\nBye").bold.white
+end
