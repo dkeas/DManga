@@ -59,9 +59,10 @@ module Mangad
         imgs_url = parse(chapter[1], IMG_LINK_REGEX[0]) do |resul, page|
           # use second pattern if the first returns a empty
           # array
+          # binding.pry # DEBUG
           if resul.empty?
             page.scan(IMG_LINK_REGEX[1]) do |img|
-              resul << img.sub!(%{//}, "")
+              resul << img[0].gsub!(%r{\\}, "")
             end
           end
 
