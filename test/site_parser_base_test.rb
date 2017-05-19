@@ -11,6 +11,9 @@ class TestSiteParserBase < Minitest::Test
                    "onepunch-chapters.html"].join("/"),
   [File.dirname(__FILE__), "files", 
    "tomo-chapters.html"].join("/")]
+  IMGS_PAGE = [ " ",
+                [File.dirname(__FILE__), "files", 
+                 "tokyoghoul-imgs.html"].join("/")]
 
   def setup
     @site_parser = Mangad::SiteParserBase.new(["manga name"])
@@ -90,6 +93,25 @@ class TestSiteParserBase < Minitest::Test
                                   Mangad::MangaHostParser::CHAPTER_LINK_REGEX[0])
       assert_equal firsts, result[-3..-1]
       assert_equal lasts, result[0..2]
+  end
+
+  def test_parse_imgs_page
+    firsts = ["https:\\/\\/img.mangahost.me\\/br\\/images\\/tokyo-ghoulre\\/99\\/00.jpg.webp",
+              "https:\\/\\/img.mangahost.me\\/br\\/images\\/tokyo-ghoulre\\/99\\/01.png.webp",
+              "https:\\/\\/img.mangahost.me\\/br\\/images\\/tokyo-ghoulre\\/99\\/02.png.webp"]
+
+    lasts = ["https:\\/\\/img.mangahost.me\\/br\\/images\\/tokyo-ghoulre\\/99\\/16.png.webp",
+             "https:\\/\\/img.mangahost.me\\/br\\/images\\/tokyo-ghoulre\\/99\\/17.png.webp",
+             "https:\\/\\/img.mangahost.me\\/br\\/images\\/tokyo-ghoulre\\/99\\/18.png.webp"]
+
+    page = File.open(IMGS_PAGE[1]).read
+    stub_request(:get, 'https://mangahost.net/manga/tokyo-ghoulre/99').
+      to_return(status:[200, "OK"], body: page)
+
+    result = @site_parser.parse("https://mangahost.net/manga/tokyo-ghoulre/99", 
+                                Mangad::MangaHostParser::IMG_LINK_REGEX[1])
+    assert_equal firsts, result[0..2]
+    assert_equal lasts, result[-3..-1]
   end
 
   def test_select_manga_when_manga_was_found

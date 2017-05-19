@@ -19,7 +19,8 @@ module Mangad
     ]
 
     # regex to extract images' url from chapter page
-    IMG_LINK_REGEX = /img_\d+['"]\s+src=['"](.*?)['"]/
+    IMG_LINK_REGEX = [/img_\d+['"]\s+src=['"](.*?)['"]/,
+                      /url['"]:['"](.*?)['"]\}/]
 
     def download
 
@@ -40,24 +41,7 @@ module Mangad
           # swap chapter[0](name) with chapter[1](url)
           # to conform with result from CHAPTER_LINK_REGEX[0]
           page.scan(CHAPTER_LINK_REGEX[1]) {|chapter| resul << chapter.rotate}
-=begin
-          # resul = page.scan(CHAPTER_LINK_REGEX[1])
-          page.scan(CHAPTER_LINK_REGEX[1]) do |c|
-
-            result << [c[1], c[0]]
-            result << c.rotate
-          end
-=end
         end
-=begin
-        page.scan(CHAPTER_LINK_REGEX[1]) do |r| # => try first regex
-          if r.length < 2
-            resul << r[0]
-          else
-            resul << r
-          end
-        end
-=end
         resul
       end
 
@@ -72,7 +56,15 @@ module Mangad
 
       # download selected chapters
       @chapters.reverse_each do |chapter|
-        imgs_url = parse(chapter[1], IMG_LINK_REGEX) do |resul, page|
+        imgs_url = parse(chapter[1], IMG_LINK_REGEX[0]) do |resul, page|
+          # use second pattern if the first returns a empty
+          # array
+          if resul.empty?
+            page.scan(IMG_LINK_REGEX[1]) do |img|
+              resul << img.sub!(%{//}, "")
+            end
+          end
+
           resul.each do |img|
             # some images urls are incorrect and need to be corrected. For exemple:
             # img.mangahost.net/br/images/img.png.webp => img.mangahost.net/br/mangas_files/img.png

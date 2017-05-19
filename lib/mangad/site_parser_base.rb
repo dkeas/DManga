@@ -1,7 +1,7 @@
 require 'mangad/options'
 require 'ruby-progressbar'
 require 'open-uri'
-# require 'pry'
+require 'pry'
 require 'rainbow'
 
 module Mangad
@@ -33,6 +33,7 @@ module Mangad
               result << r
             end
           end
+          # binding.pry # DEBUG
           result = yield(result, page) if block_given?
         else
           puts Rainbow("ERRO: Servidor respondeu: #{response.status.inpect}").red
