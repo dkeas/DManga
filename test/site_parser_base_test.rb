@@ -95,7 +95,7 @@ class TestSiteParserBase < Minitest::Test
       assert_equal lasts, result[0..2]
   end
 
-  def test_parse_imgs_page
+  def test_parse_imgs_page_alt_regex
     firsts = ["https:\\/\\/img.mangahost.me\\/br\\/images\\/tokyo-ghoulre\\/99\\/00.jpg.webp",
               "https:\\/\\/img.mangahost.me\\/br\\/images\\/tokyo-ghoulre\\/99\\/01.png.webp",
               "https:\\/\\/img.mangahost.me\\/br\\/images\\/tokyo-ghoulre\\/99\\/02.png.webp"]
