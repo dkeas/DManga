@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mangad/version'
+require 'dmanga/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "mangad"
-  spec.version       = Mangad::VERSION
+  spec.version       = DManga::VERSION
   spec.authors       = ["David Endrew"]
   spec.email         = ["david.edews@gmail.com"]
 

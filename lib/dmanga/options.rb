@@ -1,5 +1,5 @@
 require 'optparse'
-module Mangad
+module DManga
   class Options
     DEFAULT_DOWNLOAD_DIR = "#{ENV['HOME']}/Downloads"
     attr_reader :download_dir, :verbose, :site, :manga
@@ -13,7 +13,7 @@ module Mangad
 
     def parse(argv)
       opt_parser = OptionParser.new do |opts|
-        opts.banner = "Uso: mangad [opção] <nome do manga>"
+        opts.banner = "Uso: dmanga [opção] <nome do manga>"
         opts.separator   ""
         opts.separator   "Opções:"
 

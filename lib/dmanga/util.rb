@@ -1,4 +1,4 @@
-module Mangad
+module DManga
   class MangaNotFoundError < RuntimeError
   end
 

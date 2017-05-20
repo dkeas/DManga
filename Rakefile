@@ -17,7 +17,7 @@ desc "change to master branch"
 task :master { system "git checkout master" }
 
 desc "exec the app"
-task :exe {system "ruby -Ilib exe/mangad gabriel"}
+task :exe {system "ruby -Ilib exe/dmanga gabriel"}
 
 desc "console with app loaded"
 task :console {system "bundle exec bin/console"}

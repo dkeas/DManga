@@ -1,6 +1,6 @@
-# require 'mangad/site_parser_base'
-require 'mangad/site_parser_base'
-module Mangad
+# require 'dmanga/site_parser_base'
+require 'dmanga/site_parser_base'
+module DManga
   class MangaHostParser < SiteParserBase
 
     # url used to search in the site
@@ -80,7 +80,7 @@ module Mangad
         chapter_dir = "#{@manga_name}/#{chapter_name}"
         create_dir(chapter_dir)
 
-        Mangad::print_feedback "\nBaixando #{chapter_name}"
+        DManga::print_feedback "\nBaixando #{chapter_name}"
         imgs_donwload(chapter_dir, imgs_url)
       end
     end
