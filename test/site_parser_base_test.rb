@@ -1,7 +1,7 @@
 require 'webmock/minitest'
-require 'mangad/site_parser_base'
-require 'mangad/mangahost_parser'
-require 'mangad/util'
+require 'dmanga/site_parser_base'
+require 'dmanga/mangahost_parser'
+require 'dmanga/util'
 require_relative 'test_helper'
 
 class TestSiteParserBase < Minitest::Test
@@ -16,7 +16,7 @@ class TestSiteParserBase < Minitest::Test
                  "tokyoghoul-imgs.html"].join("/")]
 
   def setup
-    @site_parser = Mangad::SiteParserBase.new(["manga name"])
+    @site_parser = DManga::SiteParserBase.new(["manga name"])
   end
 
   def test_parse_search_page
@@ -38,7 +38,7 @@ class TestSiteParserBase < Minitest::Test
       to_return(status:[200, "OK"], body: page)
 
     result = @site_parser.parse("http://mangahost.net/find/one-punch", 
-                                Mangad::MangaHostParser::SEARCH_LINK_REGEX)
+                                DManga::MangaHostParser::SEARCH_LINK_REGEX)
     assert_equal mangas, result
   end
 
@@ -64,7 +64,7 @@ class TestSiteParserBase < Minitest::Test
                 headers: { "Content-Type" => "text/html; charset=UTF-8"})
 
       result = @site_parser.parse("https://mangahost.net/manga/one-punch-man", 
-                                  Mangad::MangaHostParser::CHAPTER_LINK_REGEX[1])
+                                  DManga::MangaHostParser::CHAPTER_LINK_REGEX[1])
       assert_equal firsts, result[-3..-1]
       assert_equal lasts, result[0..2]
   end
@@ -90,7 +90,7 @@ class TestSiteParserBase < Minitest::Test
                 headers: { "Content-Type" => "text/html; charset=UTF-8"})
 
       result = @site_parser.parse("https://mangahost.net/manga/tomo-chan", 
-                                  Mangad::MangaHostParser::CHAPTER_LINK_REGEX[0])
+                                  DManga::MangaHostParser::CHAPTER_LINK_REGEX[0])
       assert_equal firsts, result[-3..-1]
       assert_equal lasts, result[0..2]
   end
@@ -109,7 +109,7 @@ class TestSiteParserBase < Minitest::Test
       to_return(status:[200, "OK"], body: page)
 
     result = @site_parser.parse("https://mangahost.net/manga/tokyo-ghoulre/99", 
-                                Mangad::MangaHostParser::IMG_LINK_REGEX[1])
+                                DManga::MangaHostParser::IMG_LINK_REGEX[1])
     assert_equal firsts, result[0..2]
     assert_equal lasts, result[-3..-1]
   end
@@ -145,13 +145,13 @@ class TestSiteParserBase < Minitest::Test
      ["https://mangahost.net/manga/punch",
       "Punch!"]]
     $stdin = StringIO.new("n\nn\nn\nn\n") #simulate user input
-    assert_raises(Mangad::MangaNotFoundError) {@site_parser.select_manga(mangas)}
+    assert_raises(DManga::MangaNotFoundError) {@site_parser.select_manga(mangas)}
     $stdin = STDIN
   end
 
   def test_select_manga_when_search_returns_no_manga
     mangas = []
-    assert_raises(Mangad::MangaNotFoundError) {@site_parser.select_manga(mangas)}
+    assert_raises(DManga::MangaNotFoundError) {@site_parser.select_manga(mangas)}
   end
 
   def test_select_chapters_with_range
