@@ -11,7 +11,7 @@ begin
 
   mangahost = Mangad::MangaHostParser.new(ARGV)
   mangahost.download
-  print_feedback "\nTodos os download concluidos"
+  Mangad::print_feedback "\nTodos os download concluidos"
 
 rescue URI::InvalidURIError => uri_error
   Mangad::print_error("Nome do manga não deve conter acentos, cecedilha ou simbolos", 
