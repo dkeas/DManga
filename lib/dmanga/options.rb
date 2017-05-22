@@ -1,4 +1,5 @@
 require 'optparse'
+require 'dmanga/version'
 module DManga
   class Options
     DEFAULT_DOWNLOAD_DIR = "#{ENV['HOME']}/Downloads"
@@ -17,8 +18,13 @@ module DManga
         opts.separator   ""
         opts.separator   "Opções:"
 
+        opts.on('--version', 'Exibe o numero de versão do programa.') do
+          puts "version #{DManga::VERSION}"
+          exit
+        end
+
         opts.on('-v', '--verbose', 
-                'Exibe informações detalhadas da execução do programa.') do
+                'Exibe informações da execução do programa.') do
           @verbose = true
         end
         opts.on('-d', '--directory DIRETORIO', 
