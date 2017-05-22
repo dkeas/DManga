@@ -11,25 +11,26 @@ e pronto o script fará os downloads do capitulos selecionados.
 
 ### Windows
 Primeiro você precisa ter ruby instalado, você pode baixar ruby 
-deste [site](https://rubyinstaller.org/downloads/), basta baixar 
-um dos instaladores que estão abaixo do titulo 'RubyInstallers',
-algo com o nome similar a Ruby-2.3.3 (pode ser uma versao superior).
+deste [site](https://github.com/oneclick/rubyinstaller2/releases), 
+basta baixar um dos instaladores que estão abaixo do titulo,
+'Downloads', algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma 
+ersao superior) para arquitetura 32 bits e  rubyinstaller-2.4.1-1rc3-x64.exe para 64.
 Com o ruby instalado baixe o script/programa e descompacte-o.
 
-Obs: Esse passo a passo consida que os arquivos foram descompactados  
+Obs: Esse passo a passo considera que os arquivos foram descompactados  
 e estão na pasta Downloads.
 
 Abra o prompt de comando.
 
 No prompt digite:
 
-`cd Downloads/dmanga`
+`cd Downloads\DManga-master`
 
 Digite Enter para executar o comando.
 
 Em seguida no prompt digite:
 
-`rake install`
+`rake instalar`
 
 Com isso o script/programa será instalado. Apõs instalado os 
 arquivos baixados podem ser apagados.
@@ -50,9 +51,9 @@ Em seguida:
 Onde está SeuNomeDeUsuarion deve ser colocado o seu nome de usuario
 linux. 
 
-Obs: Eu não cheguei a testar em versões do ruby abaixo do 2.3.3,
+Obs: Eu não cheguei a testar em versões do ruby abaixo do 2.4.1,
 em caso de problema procure na internet como instalar a versão do
-ruby 2.3.3 ou superior.
+ruby 2.4.1 ou superior.
 
 ## Uso
 

@@ -25,8 +25,8 @@ rescue OpenURI::HTTPError => http_error
                         http_error)
 
 rescue DManga::MangaNotFoundError => manga_error
-  DManga::display_warn("\t#{manga_error}")
-  DManga::display_feedback Rainbow("\tExiting").blue
+  DManga::display_warn "\t#{manga_error}" 
+  DManga::display_feedback "\tExiting"
 
 rescue Net::ReadTimeout => timeout_error
   DManga::display_error("Site demorou demais para responder",
