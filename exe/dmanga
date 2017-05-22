@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'openssl'
-require 'rainbow'
 require 'net/http'
 require 'dmanga/util'
 require 'dmanga/mangahost_parser'
