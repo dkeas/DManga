@@ -12,8 +12,8 @@ e pronto o script fará os downloads do capitulos selecionados.
 ### Windows
 Primeiro você precisa ter ruby instalado, você pode baixar ruby 
 deste [site](https://github.com/oneclick/rubyinstaller2/releases), 
-basta baixar um dos instaladores que estão abaixo do titulo,
-'Downloads', algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma 
+basta baixar um dos instaladores que estão abaixo do titulo 'Downloads', 
+algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma 
 ersao superior) para arquitetura 32 bits e  rubyinstaller-2.4.1-1rc3-x64.exe para 64.
 Com o ruby instalado baixe o script/programa e descompacte-o.
 
