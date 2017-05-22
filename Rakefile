@@ -1,5 +1,6 @@
-require "bundler/gem_tasks"
+# require "bundler/gem_tasks"
 require "rake/testtask"
+require_relative "lib/dmanga/version"
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
@@ -11,13 +12,19 @@ end
 task :default => :test
 
 desc "change to second branch"
-task :second { system "git checkout second" }
+task :second do system "git checkout second" end
 
 desc "change to master branch"
-task :master { system "git checkout master" }
+task :master do system "git checkout master" end
 
 desc "exec the app"
-task :exe {system "ruby -Ilib exe/dmanga gabriel"}
+task :exe do system "ruby -Ilib exe/dmanga gabriel" end
 
 desc "console with app loaded"
-task :console {system "bundle exec bin/console"}
+task :console do system "bundle exec bin/console" end
+
+desc "instalar"
+task :instalar do 
+  system "gem build dmanga.gemspec"
+  system "gem install dmanga-#{DManga::VERSION}.gem"
+end

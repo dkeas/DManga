@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'dmanga/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "mangad"
+  spec.name          = "dmanga"
   spec.version       = DManga::VERSION
   spec.authors       = ["David Endrew"]
   spec.email         = ["david.edews@gmail.com"]
