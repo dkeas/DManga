@@ -1,39 +1,107 @@
-# Mangad
+# DManga
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mangad`. To experiment with that code, run `bin/console` for an interactive prompt.
+DManga é um script/programa ruby multiplataforma Window/Linux/Mac 
+para baixar mangas de mangahost.net. Com ele voce pode baixar 
+qualquer manga hospedado em mangahost.net(site br de hospedagem de
+manga) de forma automatizada e sem restrição de quantidade. Basta 
+dizer o nome do manga e selecionar os capitulos que deseja baixar 
+e pronto o script fará os downloads do capitulos selecionados.
 
-TODO: Delete this and the text above, and describe your gem
+## Instalação
 
-## Installation
+### Windows
+Primeiro você precisa ter ruby instalado, você pode baixar ruby 
+deste [site](https://rubyinstaller.org/downloads/), basta baixar 
+um dos instaladores que estão abaixo do titulo 'RubyInstallers',
+algo com o nome similar a Ruby-2.3.3 (pode ser uma versao superior).
+Com o ruby installado baixe o script/programa e descompacte-o.
 
-Add this line to your application's Gemfile:
+Obs: Esse passo a passo consida que os arquivos foram descompactados  
+e estão na pasta Downloads.
 
-```ruby
-gem 'mangad'
-```
+Abra o prompt de comando.
+No prompt digite:
+    cd Downloads/dmanga
 
-And then execute:
+Digite Enter para executar o comando.
 
-    $ bundle
+Em seguida no prompt digite:
+    rake install
 
-Or install it yourself as:
+Com isso o script/programa será instalado. Apõs instalado os 
+arquivos baixados podem ser apagados.
 
-    $ gem install mangad
+### Linux (debian/ubuntu)
+Baixe o script/programa e descompacte-o.
+Considerando que os arquivos foram descompactados na pasta Downloads
+abra o terminal.
 
-## Usage
+Digite:
+    $ sudo apt-get install ruby
 
-TODO: Write usage instructions here
+Em seguida:
+    $ cd /home/SeuNomeDeUsuario/Downloads/dmanga && rake install
 
-## Development
+Onde está SeuNomeDeUsuarion deve ser colocado o seu nome de usuario
+linux. 
+Obs: Eu não cheguei a testar em versões do ruby abaixo do 2.3.3,
+em caso de problema procure na internet como instalar a versão do
+ruby 2.3.3 ou superior.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Uso
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    dmanga [opões] <nome do manga>
 
-## Contributing
+Ex1:
+    dmanga "one piece"
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mangad. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Ex2:
+    dmanga tomo-chan
 
+
+obs: o nome do manga não precisa ser o nome exato, pode ser parte do
+nome ou alguma palavra contida no nome, em todo caso o script/programa
+fará uma busca no site com o nome passado.
+
+obs: se o nome do manga contiver mais de uma palavra coloque-o 
+entre aspas.
+
+O scrip/program mostará os mangas encontrados com na busca no site 
+um de cada vez, selecione o que corresponde a sua busca.
+
+Após será mostrada a list de capitulos encontrados para aquele manga.
+
+Quando ele perguntar "Quais capitulos você que baixar?", digite
+uma das sequintes opções:
+
+Para baixar todos so capitulos:
+    todos
+Baixa todos os capitulos disponiveis.
+
+Para selecionar um intervalo digite:
+    inicio-fim
+Ex1:
+    10-222
+Baixa do capitulo 10 ao 222.
+
+Ex2:
+    1-1l
+Baixa do capitulo 1 ao 11.
+
+Se voce quiser baixar de um certo capitulo ao ultimo, basta digitar
+no limite superior do intervalo um numero maior que o numero do
+ultimo capitulo.
+
+Para selecionar capitulos especificos:
+    numeroDoCapitulo,numeroDoCapitulo,numeroDoCapitulo
+Ex:
+    2,5,130
+Baixa os capitulos 2, 5 e 130.
+
+Obs: os numeros dos capitulos devem ser digitados separados por
+virgula e **sem espaços**.
+
+### Exemplos
 
 ## License
 

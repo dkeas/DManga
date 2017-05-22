@@ -21,12 +21,12 @@ module DManga
                 'Exibe informações detalhadas da execução do programa.') do
           @verbose = true
         end
-        opts.on('-d', '--directory DOWNLOADDIRETORIO', 
+        opts.on('-d', '--directory DIRETORIO', 
                 'O diretorio de destino do download. Padrão é Downloads.') do |path|
           @download_dir = path
         end
         opts.on('-h', '--help', 'Exibe esta tela.') do
-          puts opt_parser
+          puts opts
           exit
         end
 

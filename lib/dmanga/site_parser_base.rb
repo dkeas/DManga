@@ -1,7 +1,7 @@
 require 'dmanga/options'
 require 'ruby-progressbar'
 require 'open-uri'
-require 'pry'
+# require 'pry'
 require 'rainbow'
 
 module DManga
@@ -100,8 +100,8 @@ module DManga
         elsif answer =~ /^(\d+,?)+$/
           answer = answer.split(',')
           aux = []
-          # due the downloads being processed in reverse order (to make
-          # it in crescent order) need reverse the choices
+          # downloads are processed in reverse order (to make
+          # it in crescent order)so the answer is reversed too
           answer.reverse_each do |c| 
             chp = @chapters[Integer(c) * -1]
             aux << chp unless chp.nil?
