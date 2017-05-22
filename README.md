@@ -23,7 +23,7 @@ Abra o prompt de comando.
 
 No prompt digite:
 
-`cd Downloads/DManga-master`
+`cd Downloads\DManga-master`
 
 Digite Enter para executar o comando.
 
