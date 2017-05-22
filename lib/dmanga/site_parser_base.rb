@@ -2,7 +2,7 @@ require 'dmanga/options'
 require 'ruby-progressbar'
 require 'open-uri'
 # require 'pry'
-require 'rainbow'
+# require 'formatador'
 
 module DManga
   class SiteParserBase
@@ -21,10 +21,11 @@ module DManga
     # Parse the html and colect the links that match the pattern.
     # Can receive a block.
     def parse(url, regex)
-      DManga::print_feedback "\nbuscando #{url}" if @options.verbose
+      DManga::display_feedback "\nbuscando #{url}" if @options.verbose
       result = []
       open(url, "User-Agent" => USER_AGENT) do |response|
         if response.status[1] == "OK"
+          DManga::display_feedback "parsing #{url}" if @options.verbose
           page = response.read
           page.scan(regex) do |r| # => try first regex
             if r.length < 2
@@ -36,14 +37,14 @@ module DManga
           # binding.pry # DEBUG
           result = yield(result, page) if block_given?
         else
-          puts Rainbow("ERRO: Servidor respondeu: #{response.status.inpect}").red
+          DManga::display_error("ERRO: Servidor respondeu: #{response.status.inpect}")
         end
       end
       result
     end
 
     def search(url, regex)
-      DManga::print_feedback "Iniciando busca em #{@options.site}"
+      DManga::display_feedback "Iniciando busca em #{@options.site}"
       search_result = parse(url, regex)
       select_manga(search_result)
     end
@@ -52,15 +53,15 @@ module DManga
       puts # just a new line for better output
       unless mangas.empty?
         mangas.each do |manga|
-          print Rainbow("Você quer baixar #{manga[1]} [s/n]? ").bold.white
+          DManga::display_prompt("Você quer baixar #{manga[1]} [s/n]? ")
           res = $stdin.gets.chomp
           if res == 's'
             @manga_url = manga[0]
             @manga_name = manga[1]
             break
           elsif res != 'n'
-            puts Rainbow("\tOpção invalida").lightcoral
-            puts Rainbow("\tSaindo").blue
+            DManga::display_warn("\tOpção invalida")
+            DManga::display_feedback("\tSaindo")
             exit(true)
           end
         end
@@ -71,31 +72,31 @@ module DManga
     end
 
     def select_chapters
-      DManga::print_feedback "\nCapítulos:"
+      DManga::display_feedback "\nCapítulos:"
       @chapters.reverse_each.with_index do |chapter, index|
-        DManga::print_feedback "(#{index + 1})\t#{chapter[0]}"
+        DManga::display_feedback "(#{index + 1})\t#{chapter[0]}"
       end
       answer = nil
-      DManga::print_feedback "\n#{@chapters.length} capitulos encontrados"
+      DManga::display_feedback "\n#{@chapters.length} capitulos encontrados"
       loop do
-        print Rainbow("\nQuais capitulos você quer baixar (o para opções)? ").bold.white
+        DManga::display_prompt("\nQuais capitulos você quer baixar [o-opções]? ")
         answer = $stdin.gets.chomp
         if answer == "o" || answer.empty?
-          puts Rainbow("\ttodos \t\t\t\t- baixar todos os capítulos").bold.white,
-            Rainbow("\n\to \t\t\t\t- exibe opções").bold.white,
-            Rainbow("\n\tinicio-fim \t\t\t- baixar intervalo selecionado").bold.white +
-            Rainbow("\n\t\t\tEx: 0-10 - baixa do 0 ao 10").bold.white,
-            Rainbow("\n\tcapitulo,capitulo,capitulo \t- baixar capitulos selecionados").bold.white +
-            Rainbow("\n\t\t\tEx: 29,499,1 - ").bold.white +
-            Rainbow("baixa capitulos 29, 499 e 1").bold.white
+          DManga::display_prompt("\ttodos \t\t\t\t- baixar todos os capítulos")
+            DManga::display_prompt("\n\to \t\t\t\t- exibe opções")
+            DManga::display_prompt("\n\tinicio-fim \t\t\t- baixar intervalo selecionado")
+            DManga::display_prompt("\n\t\t\t\t\tEx: 0-10 - baixa do 0 ao 10")
+            DManga::display_prompt("\n\tcapitulo,capitulo,capitulo \t- baixar capitulos selecionados")
+            DManga::display_prompt("\n\t\t\t\t\tEx: 29,499,1 - ")
+            DManga::display_prompt("baixa capitulos 29, 499 e 1")
         elsif answer == "todos"
-          DManga::print_feedback "Baixando todos os capítulos" if @options.verbose
+          DManga::display_feedback "Baixando todos os capítulos" if @options.verbose
           break
         elsif answer =~ /(\d+)-(\d+)/
           b = Integer($2) <= @chapters.length ? Integer($2) * -1 : @chapters.length * -1
           e = Integer($1) * -1
           @chapters = @chapters[b..e]
-          DManga::print_feedback "Baixando capítulos do #{$1} ao #{$2}" if @options.verbose
+          DManga::display_feedback "Baixando capítulos do #{$1} ao #{$2}" if @options.verbose
           break
         elsif answer =~ /^(\d+,?)+$/
           answer = answer.split(',')
@@ -107,10 +108,10 @@ module DManga
             aux << chp unless chp.nil?
           end
           @chapters = aux
-          DManga::print_feedback "Baixando capítulos #{answer.to_s}" if @options.verbose
+          DManga::display_feedback "Baixando capítulos #{answer.to_s}" if @options.verbose
           break
         else
-          puts Rainbow("\tOpção invalida").lightcoral
+          DManga::display_warn("\tOpção invalida")
         end
       end
     end
@@ -120,7 +121,7 @@ module DManga
         original_filename =  url.slice(/(\w|[_-])+\.(png|jpg)/)
         img_path = "#{@options.download_dir}/#{chp_path}/#{original_filename}"
         unless File.exist? img_path
-          DManga::print_feedback "\n#{url}"
+          DManga::display_feedback "\n#{url}"
           pbar = nil
           open(url, 
                :content_length_proc => lambda {|size|
@@ -138,12 +139,13 @@ module DManga
             pbar.increment
           }) do |response|
             if response.status[1] == "OK"
-              DManga::print_feedback "Salvando imagem em:'#{img_path}'" if @options.verbose
+              DManga::display_feedback "Salvando imagem em:'#{img_path}'" if @options.verbose
               File.open(img_path, "wb") do |img| 
                 img.puts response.read
               end
             end
           end
+          puts
         end
       end
     end
@@ -152,12 +154,12 @@ module DManga
     # create a directory relative to download dir
     def create_dir(name)
       dir_path = "#{@options.download_dir}/#{name}"
-      DManga::print_feedback "\nCriando diretorio '#{name}' em '#{dir_path}'" if @options.verbose
+      DManga::display_feedback "\nCriando diretorio '#{name}' em '#{dir_path}'" if @options.verbose
       unless Dir.exist? dir_path
         Dir.mkdir(dir_path) 
         puts if @options.verbose ## just a blank line for prettier output
       else
-        DManga::print_feedback "'#{name}' directorio ja existe" if @options.verbose
+        DManga::display_feedback "'#{name}' directorio ja existe" if @options.verbose
       end
     end
   end

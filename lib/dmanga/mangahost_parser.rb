@@ -80,7 +80,7 @@ module DManga
         chapter_dir = "#{@manga_name}/#{chapter_name}"
         create_dir(chapter_dir)
 
-        DManga::print_feedback "\nBaixando #{chapter_name}"
+        DManga::display_feedback "\nBaixando #{chapter_name}"
         imgs_donwload(chapter_dir, imgs_url)
       end
     end

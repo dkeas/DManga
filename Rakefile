@@ -1,4 +1,4 @@
-# require "bundler/gem_tasks"
+require "bundler/gem_tasks"
 require "rake/testtask"
 require_relative "lib/dmanga/version"
 
@@ -18,7 +18,7 @@ desc "change to master branch"
 task :master do system "git checkout master" end
 
 desc "exec the app"
-task :exe do system "ruby -Ilib exe/dmanga gabriel" end
+task :exe do system "ruby -Ilib exe/dmanga denki ga honya" end
 
 desc "console with app loaded"
 task :console do system "bundle exec bin/console" end
