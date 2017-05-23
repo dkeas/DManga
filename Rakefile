@@ -25,6 +25,5 @@ task :console do system "bundle exec bin/console" end
 
 desc "instalar"
 task :instalar do 
-  system "gem build dmanga.gemspec"
   system "gem install dmanga-#{DManga::VERSION}.gem"
 end
