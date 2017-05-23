@@ -10,7 +10,6 @@ Gem::Specification.new do |spec|
   spec.email         = ["david.edews@gmail.com"]
 
   spec.summary         = "Download mangas hosted in mangahost.net"
-  # spec.description     = File.read(File.join(File.dirname(__FILE__), 'README.md'))
   spec.description     = "Download any manga hosted in mangahost.net with the option to search" +
     " and select any chapters or range of chapters"
   spec.homepage      = ""
@@ -33,7 +32,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency     "ruby-progressbar","~> 1.8"
-  # spec.add_runtime_dependency     "rainbow", "~> 2.2"
   spec.add_runtime_dependency     "formatador", "~> 0.2"
   spec.add_development_dependency "minitest","~> 5.10"
   spec.add_development_dependency "webmock", "~> 3.0"
