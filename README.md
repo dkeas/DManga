@@ -17,8 +17,7 @@ algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma
 ersao superior) para arquitetura 32 bits e  rubyinstaller-2.4.1-1rc3-x64.exe para 64.
 Com o ruby instalado baixe o script/programa e descompacte-o.
 
-Obs: Esse passo a passo considera que os arquivos foram descompactados  
-e estão na pasta Downloads.
+Obs: Esse passo a passo considera que os arquivos foram descompactados e estão na pasta Downloads.
 
 Abra o prompt de comando.
 
@@ -60,6 +59,9 @@ ruby 2.4.1 ou superior.
 `dmanga [opões] <nome do manga>`
 
 Ex1:
+
+O script é executado no prompt.
+Abra o prompt e digite:
 
 `dmanga "one piece"`
 
