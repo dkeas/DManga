@@ -8,7 +8,6 @@ Rake::TestTask.new(:test) do |t|
   t.test_files = FileList['test/**/*_test.rb']
 end
 
-# task :default => :test
 task :default => :test
 
 desc "change to second branch"
@@ -22,9 +21,3 @@ task :exe do system "ruby -Ilib exe/dmanga denki ga honya" end
 
 desc "console with app loaded"
 task :console do system "bundle exec bin/console" end
-
-desc "instalar"
-task :instalar do 
-  system "gem build dmanga.gemspec"
-  system "gem install dmanga-#{DManga::VERSION}.gem"
-end

@@ -15,37 +15,40 @@ deste [site](https://github.com/oneclick/rubyinstaller2/releases),
 basta baixar um dos instaladores que estão abaixo do titulo 'Downloads', 
 algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma 
 ersao superior) para arquitetura 32 bits e  rubyinstaller-2.4.1-1rc3-x64.exe para 64.
-Com o ruby instalado baixe o script/programa e descompacte-o.
+Com o ruby instalado baixe o script/programa 
+[daqui](https://www.dropbox.com/s/mr9pcdvaqq5yalj/dmanga-0.0.5.gem?dl=0).
 
-Obs: Esse passo a passo considera que os arquivos foram descompactados e estão na pasta Downloads.
+Obs: Esse passo a passo considera que o arquivo baixado esta na pasta Downloads.
 
 Abra o prompt de comando.
 
 No prompt digite:
 
-`cd Downloads\DManga-master`
+`cd Downloads`
 
 Digite Enter para executar o comando.
 
 Em seguida no prompt digite:
 
-`rake instalar`
+`gem install dmanga.gem`
 
-Com isso o script/programa será instalado. Apõs instalado os 
-arquivos baixados podem ser apagados.
+Digite Enter para executar o comando.
+
+Com isso o script/programa será instalado. Apõs instalado o
+arquivo baixado podem ser apagado.
 
 ### Linux (debian/ubuntu)
 Baixe o script/programa e descompacte-o.
 Considerando que os arquivos foram descompactados na pasta Downloads
 abra o terminal.
 
-Digite:
+Se voce ja nao tem o ruby, digite:
 
 `$ sudo apt-get install ruby`
 
 Em seguida:
 
-`$ cd /home/SeuNomeDeUsuario/Downloads/DManga-master && rake install`
+`$ cd /home/SeuNomeDeUsuario/Downloads && gem install dmanga.gem`
 
 Onde está SeuNomeDeUsuarion deve ser colocado o seu nome de usuario
 linux. 
@@ -56,11 +59,12 @@ ruby 2.4.1 ou superior.
 
 ## Uso
 
+O script/programa é executado no prompt.
+
 `dmanga [opões] <nome do manga>`
 
 Ex1:
 
-O script é executado no prompt.
 Abra o prompt e digite:
 
 `dmanga "one piece"`
@@ -113,7 +117,7 @@ Baixa do capitulo 1 ao 11.
 
 Se voce quiser baixar de um certo capitulo ao ultimo, basta digitar
 no limite superior do intervalo um numero maior que o numero do
-ultimo capitulo.
+ultimo capitulo (ex: 999999).
 
 Para selecionar capitulos especificos:
 
