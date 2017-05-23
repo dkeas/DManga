@@ -78,7 +78,7 @@ obs: se o nome do manga contiver mais de uma palavra coloque-o
 entre aspas.
 
 obs: você pode dizer a pasta de destino do download com a opçao -d,
-veja [Opções](#opçoes) para mais detalhes.
+veja [Opções](#opções) para mais detalhes.
 
 
 O scrip/program mostará os mangas encontrados com na busca no site 
