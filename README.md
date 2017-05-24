@@ -14,9 +14,9 @@ Primeiro você precisa ter ruby instalado, você pode baixar ruby
 deste [site](https://github.com/oneclick/rubyinstaller2/releases), 
 basta baixar um dos instaladores que estão abaixo do titulo 'Downloads', 
 algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma 
-ersao superior) para arquitetura 32 bits e  rubyinstaller-2.4.1-1rc3-x64.exe para 64.
+versão superior) para arquitetura 32 bits e rubyinstaller-2.4.1-1rc3-x64.exe para 64.
 Com o ruby instalado baixe o script/programa 
-[daqui](https://www.dropbox.com/s/mr9pcdvaqq5yalj/dmanga-0.0.5.gem?dl=0).
+[daqui](https://doc-00-04-docs.googleusercontent.com/docs/securesc/e48g4l44uanraplcv0r7a8bf4obrbmm9/ueqpdcoh8gn1h7ao96j1ir7l1gm7i5to/1495598400000/00321173399396385823/00321173399396385823/0B3kRcrIMi25ZZUNoYVZtSFZDeE0?e=download&nonce=d766bargd1ba4&user=00321173399396385823&hash=ccl85afuk42k9gghd1t6bt9ho647n84s)
 
 Obs: Esse passo a passo considera que o arquivo baixado esta na pasta Downloads.
 
@@ -39,10 +39,10 @@ arquivo baixado podem ser apagado.
 
 ### Linux (debian/ubuntu)
 Baixe o script/programa e descompacte-o.
-Considerando que os arquivos foram descompactados na pasta Downloads
+Considerando que os arquivos baixados na pasta Downloads
 abra o terminal.
 
-Se voce ja nao tem o ruby, digite:
+Se voce nao tem o ruby:
 
 `$ sudo apt-get install ruby`
 
@@ -59,16 +59,15 @@ ruby 2.4.1 ou superior.
 
 ## Uso
 
-O script/programa é executado no prompt.
-
 `dmanga [opões] <nome do manga>`
+
+obs: o script/programa é executado no prompt.
 
 Ex1:
 
-Abra o prompt e digite:
-
 `dmanga "one piece"`
 
+![dmanga uso](https://lh5.googleusercontent.com/nb2H_ZmelvupBOdXrfud0Tc_6LolW8OobfEroWEBhFW6ZwcC6OvkR-D2RBThjnZEF0jH1PqNGa9Obg=w1366-h604)
 Ex2:
 
 `dmanga tomo-chan`
@@ -78,59 +77,63 @@ obs: o nome do manga não precisa ser o nome exato, pode ser parte do
 nome ou alguma palavra contida no nome, em todo caso o script/programa
 fará uma busca no site com o nome passado.
 
-obs: se o nome do manga contiver mais de uma palavra coloque-o 
-entre aspas.
+obs: você pode cancelar a execução do script/program a qualquer hora
+clicando ctrl-c no prompt.
 
-obs: você pode dizer a pasta de destino do download com a opçao -d,
-veja [Opções](#opções) para mais detalhes.
+**obs: se o nome do manga contiver mais de uma palavra coloque-o 
+entre aspas**.
+
+obs: A pasta padrão de destino dos downloads é a pasta Downloads mas 
+você pode dizer ao script a pasta de destino do downloads com a 
+opçao -d, veja [Opções](#opções) para mais detalhes.
 
 
 O scrip/program mostará os mangas encontrados com na busca no site 
 um de cada vez, selecione o que corresponde a sua busca.
 
-Após será mostrada a list de capitulos encontrados para aquele manga.
+Após será mostrada a lista de capitulos encontrados para aquele manga.
 
 Quando ele perguntar "Quais capitulos você que baixar?", digite
 uma das sequintes opções:
 
-Para baixar todos so capitulos:
+1. Para baixar todos so capitulos:
 
-`todos`
+    `todos`
 
-Baixa todos os capitulos disponiveis.
+    Baixa todos os capitulos disponiveis.
 
-Para selecionar um intervalo digite:
+2. Para selecionar um intervalo digite:
 
-`inicio-fim`
+    `inicio-fim`
 
-Ex1:
+    Ex1:
 
-`10-222`
+    `10-222`
 
-Baixa do capitulo 10 ao 222.
+    Baixa do capitulo 10 ao 222.
 
-Ex2:
+    Ex2:
 
-`1-1l`
+    `1-1l`
 
-Baixa do capitulo 1 ao 11.
+    Baixa do capitulo 1 ao 11.
 
-Se voce quiser baixar de um certo capitulo ao ultimo, basta digitar
-no limite superior do intervalo um numero maior que o numero do
-ultimo capitulo (ex: 999999).
+    Se voce quiser baixar de um certo capitulo ao ultimo, basta digitar
+    no limite superior do intervalo um numero maior que o numero do
+    ultimo capitulo (ex: 999999).
 
-Para selecionar capitulos especificos:
+3. Para selecionar capitulos especificos:
 
-`numeroDoCapitulo,numeroDoCapitulo,numeroDoCapitulo`
+    `numeroDoCapitulo,numeroDoCapitulo,numeroDoCapitulo`
 
-Ex:
+    Ex:
 
-`2,5,130`
+    `2,5,130`
 
-Baixa os capitulos 2, 5 e 130.
+    Baixa os capitulos 2, 5 e 130.
 
-Obs: os numeros dos capitulos devem ser digitados separados por
-virgula e **sem espaços**.
+    Obs: os numeros dos capitulos devem ser digitados separados por
+    virgula e **sem espaços**.
 
 ### Opções
 

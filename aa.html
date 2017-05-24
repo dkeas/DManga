@@ -1,0 +1,193 @@
+<h1>DManga</h1>
+
+<p>DManga é um script/programa ruby multiplataforma Window/Linux/Mac 
+para baixar mangas de mangahost.net. Com ele voce pode baixar 
+qualquer manga hospedado em mangahost.net (site br de hospedagem de
+manga) de forma automatizada e sem restrição de quantidade. Basta 
+dizer o nome do manga e selecionar os capitulos que deseja baixar 
+e pronto o script fará os downloads do capitulos selecionados.</p>
+
+<h2>Instalação</h2>
+
+<h3>Windows</h3>
+
+<p>Primeiro você precisa ter ruby instalado, você pode baixar ruby 
+deste <a href="https://github.com/oneclick/rubyinstaller2/releases">site</a>, 
+basta baixar um dos instaladores que estão abaixo do titulo 'Downloads', 
+algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma 
+ersao superior) para arquitetura 32 bits e  rubyinstaller-2.4.1-1rc3-x64.exe para 64.
+Com o ruby instalado baixe o script/programa 
+<a href="https://doc-00-04-docs.googleusercontent.com/docs/securesc/e48g4l44uanraplcv0r7a8bf4obrbmm9/ueqpdcoh8gn1h7ao96j1ir7l1gm7i5to/1495598400000/00321173399396385823/00321173399396385823/0B3kRcrIMi25ZZUNoYVZtSFZDeE0?e=download&amp;nonce=d766bargd1ba4&amp;user=00321173399396385823&amp;hash=ccl85afuk42k9gghd1t6bt9ho647n84s">daqui</a></p>
+
+<p>Obs: Esse passo a passo considera que o arquivo baixado esta na pasta Downloads.</p>
+
+<p>Abra o prompt de comando.</p>
+
+<p>No prompt digite:</p>
+
+<p><code>cd Downloads</code></p>
+
+<p>Digite Enter para executar o comando.</p>
+
+<p>Em seguida no prompt digite:</p>
+
+<p><code>gem install dmanga.gem</code></p>
+
+<p>Digite Enter para executar o comando.</p>
+
+<p>Com isso o script/programa será instalado. Apõs instalado o
+arquivo baixado podem ser apagado.</p>
+
+<h3>Linux (debian/ubuntu)</h3>
+
+<p>Baixe o script/programa e descompacte-o.
+Considerando que os arquivos baixados na pasta Downloads
+abra o terminal.</p>
+
+<p>Se voce nao tem o ruby:</p>
+
+<p><code>$ sudo apt-get install ruby</code></p>
+
+<p>Em seguida:</p>
+
+<p><code>$ cd /home/SeuNomeDeUsuario/Downloads &amp;&amp; gem install dmanga.gem</code></p>
+
+<p>Onde está SeuNomeDeUsuarion deve ser colocado o seu nome de usuario
+linux. </p>
+
+<p>Obs: Eu não cheguei a testar em versões do ruby abaixo do 2.4.1,
+em caso de problema procure na internet como instalar a versão do
+ruby 2.4.1 ou superior.</p>
+
+<h2>Uso</h2>
+
+<p><code>dmanga [opões] &lt;nome do manga&gt;</code></p>
+
+<p>obs: o script/programa é executado no prompt.</p>
+
+<p>Ex1:</p>
+
+<p><code>dmanga "one piece"</code></p>
+
+<p><img src="https://lh5.googleusercontent.com/nb2H_ZmelvupBOdXrfud0Tc_6LolW8OobfEroWEBhFW6ZwcC6OvkR-D2RBThjnZEF0jH1PqNGa9Obg=w1366-h604" alt="dmanga uso" title="" />
+Ex2:</p>
+
+<p><code>dmanga tomo-chan</code></p>
+
+<p>obs: o nome do manga não precisa ser o nome exato, pode ser parte do
+nome ou alguma palavra contida no nome, em todo caso o script/programa
+fará uma busca no site com o nome passado.</p>
+
+<p>obs: você pode cancelar a execução do script/program a qualquer hora
+clicando ctrl-c no prompt.</p>
+
+<p><strong>obs: se o nome do manga contiver mais de uma palavra coloque-o 
+entre aspas</strong>.</p>
+
+<p>obs: A pasta padrão de destino dos downloads é a pasta Downloads mas 
+você pode dizer ao script a pasta de destino do downloads com a 
+opçao -d, veja <a href="#opções">Opções</a> para mais detalhes.</p>
+
+<p>O scrip/program mostará os mangas encontrados com na busca no site 
+um de cada vez, selecione o que corresponde a sua busca.</p>
+
+<p>Após será mostrada a lista de capitulos encontrados para aquele manga.</p>
+
+<p>Quando ele perguntar "Quais capitulos você que baixar?", digite
+uma das sequintes opções:</p>
+
+<ol>
+<li><p>Para baixar todos so capitulos:</p>
+
+<p><code>todos</code></p>
+
+<p>Baixa todos os capitulos disponiveis.</p></li>
+<li><p>Para selecionar um intervalo digite:</p>
+
+<p><code>inicio-fim</code></p>
+
+<p>Ex1:</p>
+
+<p><code>10-222</code></p>
+
+<p>Baixa do capitulo 10 ao 222.</p>
+
+<p>Ex2:</p>
+
+<p><code>1-1l</code></p>
+
+<p>Baixa do capitulo 1 ao 11.</p>
+
+<p>Se voce quiser baixar de um certo capitulo ao ultimo, basta digitar
+no limite superior do intervalo um numero maior que o numero do
+ultimo capitulo (ex: 999999).</p></li>
+<li><p>Para selecionar capitulos especificos:</p>
+
+<p><code>numeroDoCapitulo,numeroDoCapitulo,numeroDoCapitulo</code></p>
+
+<p>Ex:</p>
+
+<p><code>2,5,130</code></p>
+
+<p>Baixa os capitulos 2, 5 e 130.</p>
+
+<p>Obs: os numeros dos capitulos devem ser digitados separados por
+virgula e <strong>sem espaços</strong>.</p></li>
+</ol>
+
+<h3>Opções</h3>
+
+<p><code>--version</code></p>
+
+<p>Mostra o numero da versao do programa e sai.</p>
+
+<p><code>-d &lt;pasta de download&gt;, --directory &lt;pasta de download&gt;</code></p>
+
+<p>A pasta de destino do downlaod.</p>
+
+<p><code>-h , --help</code></p>
+
+<p>Mostra a messagem de ajuda e sai.</p>
+
+<p><code>-v , --verbose</code></p>
+
+<p>Mostra detalhes da execução do programa.</p>
+
+<p>A pasta de destino do downlaod.</p>
+
+<h3>Exemplos</h3>
+
+<p><code>dmanga -d "c:\window\users\images\manga e animes" "One piece"</code></p>
+
+<p>No windows, baixe 'One piece' para
+'c:\window\users\images\manga e animes'</p>
+
+<p><code>dmanga "One punch man"</code></p>
+
+<p>Baixe 'One punch man' para 'Downloads'. </p>
+
+<p><code>dmanga -d /home/usuario/Images/mangas tomo-chan</code></p>
+
+<p>No linux baixe 'tomo-chan' para '/home/usuario/Images/mangas'. </p>
+
+<h3>Exemplos de seleção de capitulos</h3>
+
+<p><code>todos</code></p>
+
+<p>Baixa todos os capitulos.</p>
+
+<p><code>34-96</code></p>
+
+<p>Baixa do capitulos do 34 ao 96.</p>
+
+<p><code>1,3,55</code></p>
+
+<p>Baixa do capitulos 1, 2 e 55.</p>
+
+<p><code>34,124</code></p>
+
+<p>Baixa do capitulos 34 e 124.</p>
+
+<h2>License</h2>
+
+<p>The gem is available as open source under the terms of the <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
