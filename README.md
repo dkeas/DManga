@@ -67,7 +67,7 @@ Ex1:
 
 `dmanga "one piece"`
 
-![dmanga uso](https://lh5.googleusercontent.com/nb2H_ZmelvupBOdXrfud0Tc_6LolW8OobfEroWEBhFW6ZwcC6OvkR-D2RBThjnZEF0jH1PqNGa9Obg=w1366-h604)
+![dmanga uso](https://doc-0k-04-docs.googleusercontent.com/docs/securesc/e48g4l44uanraplcv0r7a8bf4obrbmm9/js308s0c89ok86ts7v2pstl1vom2cm0h/1495598400000/00321173399396385823/00321173399396385823/0B3kRcrIMi25ZcVJ2RmJ6ZGdCRjQ?e=download)
 Ex2:
 
 `dmanga tomo-chan`
