@@ -16,7 +16,7 @@ basta baixar um dos instaladores que estão abaixo do titulo 'Downloads',
 algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma 
 versão superior) para arquitetura 32 bits e rubyinstaller-2.4.1-1rc3-x64.exe para 64.
 Com o ruby instalado baixe o script/programa 
-[daqui](https://doc-00-04-docs.googleusercontent.com/docs/securesc/e48g4l44uanraplcv0r7a8bf4obrbmm9/ueqpdcoh8gn1h7ao96j1ir7l1gm7i5to/1495598400000/00321173399396385823/00321173399396385823/0B3kRcrIMi25ZZUNoYVZtSFZDeE0?e=download&nonce=d766bargd1ba4&user=00321173399396385823&hash=ccl85afuk42k9gghd1t6bt9ho647n84s)
+[daqui](https://github.com/david-endrew/DManga/releases/download/v0.0.5/dmanga.gem)
 
 Obs: Esse passo a passo considera que o arquivo baixado esta na pasta Downloads.
 
@@ -67,11 +67,13 @@ Ex1:
 
 `dmanga "one piece"`
 
-![dmanga uso](https://doc-0k-04-docs.googleusercontent.com/docs/securesc/e48g4l44uanraplcv0r7a8bf4obrbmm9/js308s0c89ok86ts7v2pstl1vom2cm0h/1495598400000/00321173399396385823/00321173399396385823/0B3kRcrIMi25ZcVJ2RmJ6ZGdCRjQ?e=download)
 Ex2:
 
 `dmanga tomo-chan`
 
+obs: A pasta padrão de destino dos downloads é a pasta Downloads mas 
+você pode dizer ao script a pasta de destino do downloads com a 
+opçao -d, veja [Opções](#opções) para mais detalhes.
 
 obs: o nome do manga não precisa ser o nome exato, pode ser parte do
 nome ou alguma palavra contida no nome, em todo caso o script/programa
@@ -82,11 +84,6 @@ clicando ctrl-c no prompt.
 
 **obs: se o nome do manga contiver mais de uma palavra coloque-o 
 entre aspas**.
-
-obs: A pasta padrão de destino dos downloads é a pasta Downloads mas 
-você pode dizer ao script a pasta de destino do downloads com a 
-opçao -d, veja [Opções](#opções) para mais detalhes.
-
 
 O scrip/program mostará os mangas encontrados com na busca no site 
 um de cada vez, selecione o que corresponde a sua busca.
