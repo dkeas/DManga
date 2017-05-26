@@ -15,43 +15,27 @@ deste [site](https://github.com/oneclick/rubyinstaller2/releases),
 basta baixar um dos instaladores que estão abaixo do titulo 'Downloads', 
 algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma 
 versão superior) para arquitetura 32 bits e rubyinstaller-2.4.1-1rc3-x64.exe para 64.
-Com o ruby instalado baixe o script/programa 
-[daqui](https://github.com/david-endrew/DManga/releases/download/v0.0.5/dmanga.gem)
 
-Obs: Esse passo a passo considera que o arquivo baixado esta na pasta Downloads.
-
-Abra o prompt de comando.
+Com o ruby instalado. Abra o prompt de comando.
 
 No prompt digite:
 
-`cd Downloads`
+`gem install dmanga`
 
 Digite Enter para executar o comando.
 
-Em seguida no prompt digite:
-
-`gem install dmanga.gem`
-
-Digite Enter para executar o comando.
-
-Com isso o script/programa será instalado. Apõs instalado o
-arquivo baixado pode ser apagado.
+Com isso o script/programa será instalado.
 
 ### Linux (debian/ubuntu)
-Baixe o script/programa e descompacte-o.
-Considerando que os arquivos baixados na pasta Downloads
-abra o terminal.
+Abra o terminal.
 
-Se voce não tem o ruby:
+Se voce não tem o ruby instalado:
 
 `$ sudo apt-get install ruby`
 
 Em seguida:
 
-`$ cd /home/suaPastaDeUsuario/Downloads && gem install dmanga.gem`
-
-Onde está suaPastaDeUsuario deve ser colocado o nome da sua
-pasta usuario linux. 
+`$ gem install dmanga`
 
 Obs: Eu não cheguei a testar em versões do ruby abaixo do 2.4.1,
 em caso de problema procure na internet como instalar a versão do
