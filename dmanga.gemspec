@@ -9,10 +9,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ["David Endrew"]
   spec.email         = ["david.edews@gmail.com"]
 
-  spec.summary         = "Download mangas hosted in mangahost.net"
-  spec.description     = "Download any manga hosted in mangahost.net with the option to search" +
+  spec.summary         = "Download any manga from mangahost.net"
+  spec.description     = "Download any manga from mangahost.net with the option to search" +
     " and select any chapters or range of chapters"
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/david-endrew/DManga"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
