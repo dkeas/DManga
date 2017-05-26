@@ -35,23 +35,23 @@ Em seguida no prompt digite:
 Digite Enter para executar o comando.
 
 Com isso o script/programa será instalado. Apõs instalado o
-arquivo baixado podem ser apagado.
+arquivo baixado pode ser apagado.
 
 ### Linux (debian/ubuntu)
 Baixe o script/programa e descompacte-o.
 Considerando que os arquivos baixados na pasta Downloads
 abra o terminal.
 
-Se voce nao tem o ruby:
+Se voce não tem o ruby:
 
 `$ sudo apt-get install ruby`
 
 Em seguida:
 
-`$ cd /home/SeuNomeDeUsuario/Downloads && gem install dmanga.gem`
+`$ cd /home/suaPastaDeUsuario/Downloads && gem install dmanga.gem`
 
-Onde está SeuNomeDeUsuarion deve ser colocado o seu nome de usuario
-linux. 
+Onde está suaPastaDeUsuario deve ser colocado o nome da sua
+pasta usuario linux. 
 
 Obs: Eu não cheguei a testar em versões do ruby abaixo do 2.4.1,
 em caso de problema procure na internet como instalar a versão do
@@ -149,8 +149,6 @@ Mostra a messagem de ajuda e sai.
 `-v , --verbose`
 
 Mostra detalhes da execução do programa.
-
-A pasta de destino do downlaod.
 
 ### Exemplos
 
