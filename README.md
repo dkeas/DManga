@@ -85,7 +85,7 @@ clicando ctrl-c no prompt.
 **obs: se o nome do manga contiver mais de uma palavra coloque-o 
 entre aspas**.
 
-O scrip/program mostará os mangas encontrados com na busca no site 
+O scrip/program mostará os mangas encontrados na busca no site 
 um de cada vez, selecione o que corresponde a sua busca.
 
 Após será mostrada a lista de capitulos encontrados para aquele manga.
