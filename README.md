@@ -26,6 +26,12 @@ Digite Enter para executar o comando.
 
 Com isso o script/programa será instalado.
 
+Você pode atualizar o script/programa com:
+
+`gem update`
+
+Atualize sempre para obter melhoras (desempenho ou novas funcionalidades) e correções de bugs.
+
 ### Linux (debian/ubuntu)
 Abra o terminal.
 
@@ -36,6 +42,14 @@ Se voce não tem o ruby instalado:
 Em seguida:
 
 `$ gem install dmanga`
+
+Pode ser necessário usar o sudo.
+
+Você pode atualizar o script/programa com:
+
+`gem update`
+
+Atualize sempre para obter melhoras (desempenho ou novas funcionalidades) e correções de bugs.
 
 Obs: Eu não cheguei a testar em versões do ruby abaixo do 2.4.1,
 em caso de problema procure na internet como instalar a versão do
