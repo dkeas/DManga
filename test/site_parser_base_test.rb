@@ -238,4 +238,12 @@ class TestSiteParserBase < Minitest::Test
         $stdin = STDIN
         assert_equal @site_parser.chapters, chapters
     end
+
+    def test_create_dir
+        dir_name = "test_dir"
+        @site_parser.create_dir dir_name 
+        dir_path = [@site_parser.download_dir, dir_name].join(File::SEPARATOR)
+        assert File.exist? dir_path
+        Dir.rmdir dir_path 
+    end
 end

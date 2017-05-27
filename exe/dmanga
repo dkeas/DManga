@@ -47,6 +47,11 @@ rescue OpenSSL::SSL::SSLError => ssl_error
 rescue  Errno::ENETUNREACH => error
   DManga::display_error("Não foi possivel conectar a internet",
                         error)
+
+rescue  Errno::ENOENT => error
+  DManga::display_error("Diretorio epecificado não existe",
+                        error)
+
 rescue Interrupt
   DManga::display_feedback("\nBye")
 end

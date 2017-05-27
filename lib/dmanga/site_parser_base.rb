@@ -9,7 +9,7 @@ module DManga
     class SiteParserBase
         USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0"
 
-        attr_accessor :manga_name, :manga_url, :download_path, 
+        attr_accessor :manga_name, :manga_url,
             :chapters, :verbose
 
         def initialize(argv)
@@ -19,10 +19,10 @@ module DManga
             @chapters = nil
         end
 
-        # Parse the html and colect the links that match the pattern.
+        # Parse the html and colect links that match the pattern.
         # Can receive a block.
         def parse(url, regex)
-            DManga::display_feedback "\nbuscando #{url}" if @options.verbose
+            DManga::display_feedback "\nfetching #{url}" if @options.verbose
             result = []
             open(url, "User-Agent" => USER_AGENT) do |response|
                 if response.status[1] == "OK"
@@ -35,7 +35,6 @@ module DManga
                             result << r
                         end
                     end
-                    # binding.pry # DEBUG
                     result = yield(result, page) if block_given?
                 else
                     DManga::display_error("ERRO: Servidor respondeu: #{response.status.inpect}")
@@ -78,18 +77,25 @@ module DManga
                 DManga::display_feedback "(#{index + 1})\t#{chapter[0]}"
             end
             answer = nil
-            DManga::display_feedback "\n#{@chapters.length} capitulos encontrados"
+            DManga::display_feedback "\n#{@chapters.length} capitulos encontrados\n"
             loop do
-                DManga::display_prompt("\nQuais capitulos você quer baixar [o-opções]? ")
+                DManga::display_prompt("Quais capitulos você quer baixar? ")
                 answer = $stdin.gets.chomp
                 if answer == "o" || answer.empty?
-                    DManga::display_prompt("\ttodos \t\t\t\t- baixar todos os capítulos")
-                    DManga::display_prompt("\n\to \t\t\t\t- exibe opções")
-                    DManga::display_prompt("\n\tinicio-fim \t\t\t- baixar intervalo selecionado")
-                    DManga::display_prompt("\n\t\t\t\t\tEx: 0-10 - baixa do 0 ao 10")
-                    DManga::display_prompt("\n\tcapitulo,capitulo,capitulo \t- baixar capitulos selecionados")
-                    DManga::display_prompt("\n\t\t\t\t\tEx: 29,499,1 - ")
-                    DManga::display_prompt("baixa capitulos 29, 499 e 1")
+                    DManga::display_feedback(
+                        <<-EOS
+  o                         - exibe opções.
+    c                         - cancelar.
+    todos                     - baixar todos os capítulos.
+    inicio-fim                - baixar intervalo selecionado.
+                                    Ex: 0-10 - baixa do 0 ao 10.
+    capNum,capNum,capNum      - baixar capitulos selecionados.
+                                    Ex: 29,499,1 - baixa capitulos 29, 499 e 1.
+                        EOS
+                    )
+                elsif answer == "c"
+                    DManga::display_feedback("Saindo")
+                    exit true
                 elsif answer == "todos"
                     DManga::display_feedback "Baixando todos os capítulos" if @options.verbose
                     break
@@ -143,14 +149,12 @@ module DManga
                                                            :format => '%a %B %p%% %r KB/sec',
                                                            :rate_scale => lambda { |rate| 
                                                                rate / 1024 },
-                                                                   length: 70
-                                                          )
+                                                                   length: 70)
                             else
                                 pbar =  ProgressBar.create(:total => size / Integer(16384), 
                                                            :format => '%a %B %p%% %r KB/sec',
                                                            :rate_scale => lambda { |rate| 
-                                                               rate / 1024 }
-                                                          )
+                                                               rate / 1024 })
                             end
                         end
                     },
@@ -172,7 +176,7 @@ module DManga
         # check if the directory exists and 
         # create a directory relative to download dir
         def create_dir(name)
-            dir_path = "#{@options.download_dir}/#{name}"
+            dir_path = [@options.download_dir, name].join(File::SEPARATOR)
             DManga::display_feedback "\nCriando diretorio '#{name}' em '#{dir_path}'" if @options.verbose
             unless Dir.exist? dir_path
                 Dir.mkdir(dir_path) 
@@ -180,6 +184,10 @@ module DManga
             else
                 DManga::display_feedback "'#{name}' directorio ja existe" if @options.verbose
             end
+        end
+
+        def download_dir
+            @options.download_dir
         end
     end
 end

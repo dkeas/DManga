@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
     spec.summary         = "Download any manga from mangahost.net"
     spec.description     = "Download any manga from mangahost.net. You can search and " +
-        "select any chapter or chapter range"
+        "select any chapter or range of chapters"
     spec.homepage      = "https://github.com/david-endrew/DManga"
     spec.license       = "MIT"
 
