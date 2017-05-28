@@ -186,6 +186,10 @@ module DManga
             end
         end
 
+        def zip_chapter
+            
+        end
+
         def download_dir
             @options.download_dir
         end

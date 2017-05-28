@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
     spec.require_paths = ["lib"]
 
     spec.add_runtime_dependency     "ruby-progressbar","~> 1.8"
+    spec.add_runtime_dependency     "rubyzip","~> 1.2"
     spec.add_runtime_dependency     "formatador", "~> 0.2"
     spec.add_development_dependency "minitest","~> 5.10"
     spec.add_development_dependency "webmock", "~> 3.0"

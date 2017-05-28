@@ -57,7 +57,7 @@ ruby 2.4.1 ou superior.
 
 ## Uso
 
-`dmanga [opões] <nome do manga>`
+`dmanga [opções] <nome do manga>`
 
 obs: o script/programa é executado no prompt.
 
@@ -138,7 +138,7 @@ Mostra o numero da versao do programa e sai.
 
 `-d <pasta de download>, --directory <pasta de download>`
 
-A pasta de destino do downlaod.
+Define a pasta de destino do downlaod.
 
 `-h , --help`
 
@@ -150,7 +150,7 @@ Mostra detalhes da execução do programa.
 
 ### Exemplos
 
-`dmanga -d "c:\window\users\images\manga e animes" "One piece"`
+`dmanga -d "C:\window\users\images\manga e animes" "One piece"`
 
 No windows, baixe 'One piece' para
 'c:\window\users\images\manga e animes'
