@@ -53,7 +53,10 @@ module DManga
             # prompt user to select chapters to download
             select_chapters
 
+			# remove simbols that cannot be used in folder's name on windows
+			remove_invalid_simbols(@manga_name)
             # create manga directory
+			remove_invalid_simbols(@manga_name)
             create_dir(@manga_name)
 
             # download selected chapters
@@ -79,6 +82,8 @@ module DManga
 
                 # create chapter directory relative to manga directory
                 chapter_name = "#{chapter[0]}"
+				# remove simbols that cannot be used in folder's name on windows
+				remove_invalid_simbols chapter_name
                 chapter_dir = "#{@manga_name}/#{chapter_name}"
                 create_dir(chapter_dir)
 
@@ -89,7 +94,8 @@ module DManga
 
         private
         # Due to problems with open-uri and utf-8
-        # some chapters name need to be corrected
+        # some chapters' name need to be corrected.
+		# substitute Cap$amptulo for capitulo.
         def correct_chapters_name
             @chapters.each {|chapter| chapter[0].sub!(/[cC]ap.*?tulo/, "capitulo")}
         end

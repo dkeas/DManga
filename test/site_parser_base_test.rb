@@ -246,4 +246,14 @@ class TestSiteParserBase < Minitest::Test
         assert File.exist? dir_path
         Dir.rmdir dir_path 
     end
+	
+	def test_remove_invlid_simbols
+		invalid_names = ["Tokyo Ghoul:Re", "Tokyo Ghoul\\Re", "Tokyo Ghoul/Re", "Tokyo Ghoul*Re",
+		"should\\remove/any:invalid*character?in<that>string|end"]
+		
+		corrected_names = ["Tokyo Ghoul_Re", "Tokyo Ghoul_Re", "Tokyo Ghoul_Re", "Tokyo Ghoul_Re",
+		"should_remove_any_invalid_character_in_that_string_end"]
+		invalid_names.each{ |n| @site_parser.remove_invalid_simbols(n) }
+		assert_equal corrected_names, invalid_names
+	end
 end

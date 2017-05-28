@@ -10,7 +10,7 @@ begin
 
   mangahost = DManga::MangaHostParser.new(ARGV)
   mangahost.download
-  DManga::print_feedback "\nTodos os download concluidos"
+  DManga::display_feedback "\nTodos os download concluidos"
 
 rescue URI::InvalidURIError => uri_error
   DManga::display_error("Nome do manga não deve conter acentos, cecedilha ou simbolos", 
