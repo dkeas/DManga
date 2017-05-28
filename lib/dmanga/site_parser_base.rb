@@ -186,8 +186,14 @@ module DManga
             end
         end
 
+		# return the distiny download directory
         def download_dir
             @options.download_dir
+        end
+
+		def remove_invalid_simbols(name)
+			# windows OS dont accep these simbols in folder name
+            name.gsub!(/[\/\\:*?"<>|]/, '_')
         end
     end
 end
