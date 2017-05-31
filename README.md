@@ -7,6 +7,18 @@ manga) de forma automatizada e sem restrição de quantidade. Basta
 dizer o nome do manga e selecionar os capitulos que deseja baixar 
 e pronto o script fará os downloads do capitulos selecionados.
 
+#### Atualização 
+
+> - Corrigido erro com download de shokugeki no souma 
+> - Corrigido erro com download de elfen lied 
+> - Corrigido erro com download de tokyo ghoul:re no windows  
+
+> **Se acontecer qualquer erro atualize o script/programa (esse erro provalvemente já foi corrigido)**.  
+
+> Para atualizar:  
+
+> `gem update dmanga`
+
 ## Instalação
 
 ### Windows

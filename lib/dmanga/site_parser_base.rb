@@ -172,12 +172,12 @@ module DManga
         # create a directory relative to downlaod directory
         def create_dir(relative_path)
             absolute_path = [@options.download_dir, relative_path].join(File::SEPARATOR)
-            DManga::display_feedback "\nCriando diretorio '#{relative_path}' em '#{dir_path}'" if @options.verbose
+	    DManga::display_feedback "\nCriando diretorio '#{relative_path}' em '#{@options.download_dir}'" if @options.verbose
             unless Dir.exist? absolute_path
                 Dir.mkdir(absolute_path) 
                 puts if @options.verbose ## just a blank line for prettier output
             else
-                DManga::display_feedback "'#{relative_paht}' directorio ja existe" if @options.verbose
+                DManga::display_feedback "'#{relative_path}' directorio ja existe" if @options.verbose
             end
         end
 
