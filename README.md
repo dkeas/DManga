@@ -28,7 +28,7 @@ Com isso o script/programa será instalado.
 
 Você pode atualizar o script/programa com:
 
-`gem update`
+`gem update dmanga`
 
 Atualize sempre para obter melhoras (desempenho ou novas funcionalidades) e correções de bugs.
 
@@ -47,7 +47,7 @@ Pode ser necessário usar o sudo.
 
 Você pode atualizar o script/programa com:
 
-`gem update`
+`gem update dmanga`
 
 Atualize sempre para obter melhoras (desempenho ou novas funcionalidades) e correções de bugs.
 
