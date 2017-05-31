@@ -109,7 +109,8 @@ module DManga
 		# substitute Cru00e9ditos for Créditos.
         # one uri at a time
         def correct_image_uri(img_uri)
-            img_uri.sub!(/[cC]r.*?ditos/, "Créditos")
+            img_uri.sub!(/[cC]r.{2,10}ditos/, "Créditos")
+            #img_uri.sub!(/[cC]r.*?ditos/, "Créditos")
         end
     end
 end
