@@ -1,6 +1,7 @@
 # require 'dmanga/site_parser_base'
 require 'dmanga/site_parser_base'
 require 'dmanga/zip_file_generator'
+#require 'pry'
 
 module DManga
     class MangaHostParser < SiteParserBase
@@ -76,6 +77,9 @@ module DManga
                         # img.mangahost.net/br/images/img.png.webp => img.mangahost.net/br/mangas_files/img.png
                         img.sub!(/images/, "mangas_files")
                         img.sub!(/\.webp/, "")
+
+                        #correct créditos img problem
+                        correct_image_uri(img)
                     end
                     resul
                 end
@@ -88,7 +92,7 @@ module DManga
                 create_dir(chapter_dir)
 
                 DManga::display_feedback "\nBaixando #{chapter_name}"
-                imgs_donwload(chapter_dir, imgs_url)
+                imgs_download(chapter_dir, imgs_url)
             end
         end
 
@@ -98,6 +102,14 @@ module DManga
 		# substitute Cap$amptulo for capitulo.
         def correct_chapters_name
             @chapters.each {|chapter| chapter[0].sub!(/[cC]ap.*?tulo/, "capitulo")}
+        end
+
+        # Due to problems with open-uri and utf-8
+        # some images uris need to be corrected.
+		# substitute Cru00e9ditos for Créditos.
+        # one uri at a time
+        def correct_image_uri(img_uri)
+            img_uri.sub!(/[cC]r.*?ditos/, "Créditos")
         end
     end
 end

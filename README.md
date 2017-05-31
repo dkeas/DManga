@@ -69,6 +69,10 @@ Ex2:
 
 `dmanga tomo-chan`
 
+Ex3:
+<!--![exemplo de uso](https://github.com/david-endrew/somethings/blob/master/uso_exemplo.gif)-->
+![exemplo de uso](https://github.com/david-endrew/somethings/blob/master/uso_exemplo.gif)
+
 obs: A pasta padrão de destino dos downloads é a pasta Downloads mas 
 você pode dizer ao script a pasta de destino do downloads com a 
 opçao -d, veja [Opções](#opções) para mais detalhes.
@@ -153,7 +157,7 @@ Mostra detalhes da execução do programa.
 `dmanga -d "C:\window\users\images\manga e animes" "One piece"`
 
 No windows, baixe 'One piece' para
-'c:\window\users\images\manga e animes'
+'C:\window\users\images\manga e animes'
 
 `dmanga "One punch man"`
 
@@ -171,15 +175,19 @@ Baixa todos os capitulos.
 
 `34-96`
 
-Baixa do capitulos do 34 ao 96.
+Baixa do capitulo 34 ao 96.
 
 `1,3,55`
 
-Baixa do capitulos 1, 2 e 55.
+Baixa os capitulos 1, 3 e 55.
 
 `34,124`
 
-Baixa do capitulos 34 e 124.
+Baixa os capitulos 34 e 124.
+
+`200`
+
+Baixa o capitulo 200.
 
 ## License
 

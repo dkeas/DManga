@@ -2,6 +2,7 @@ require 'dmanga/options'
 require 'dmanga/os'
 require 'ruby-progressbar'
 require 'open-uri'
+require 'addressable/uri'
 # require 'pry'
 # require 'formatador'
 
@@ -15,6 +16,7 @@ module DManga
         def initialize(argv)
             @options = Options.new(argv)
             @manga_url = nil
+            # manga_name also is used as manga directory name
             @manga_name = nil
             @chapters = nil
         end
@@ -123,44 +125,37 @@ module DManga
             end
         end
 
-        def imgs_donwload(chp_path, imgs_urls)
+        # return a progressbar suitable to the user operating system
+        def get_progressbar
+            if DManga::OS.windows?
+                return  ProgressBar.create(:title => 'Baixando', 
+                                           :starting_at => 20,
+                                           :length => 70,
+                                           :total => nil)
+            else
+                return  ProgressBar.create(:title => 'Baixando', 
+                                           :starting_at => 20,
+                                           :total => nil)
+            end
+        end
+
+        # download images to a path relative to download directory
+        def imgs_download(chp_path, imgs_urls)
             imgs_urls.each do |url|
-                original_filename =  url.slice(/(\w|[_-])+\.(png|jpg)/)
-                img_path = "#{@options.download_dir}/#{chp_path}/#{original_filename}"
+                original_filename =  url.slice(/(?u)(\w|[_-])+\.(png|jpg)/)
+                #original_filename =  url.slice(/(\w|[_-])+\.(png|jpg)/)
+
+                img_path = [@options.download_dir,
+                            chp_path, 
+                            original_filename].join(File::SEPARATOR)
                 unless File.exist? img_path
-                    DManga::display_feedback "\n#{url}"
-                    pbar = nil
-                    open(url, 
-                         :content_length_proc => lambda {|size|
-                        if size.nil?
-                            if DManga::OS.windows?
-                                pbar =  ProgressBar.create(:title => 'Baixando', 
-                                                           :starting_at => 20,
-                                                           :length => 70,
-                                                           :total => nil)
-                            else
-                                pbar =  ProgressBar.create(:title => 'Baixando', 
-                                                           :starting_at => 20,
-                                                           :total => nil)
-                            end
-                        else
-                            if DManga::OS.windows?
-                                pbar =  ProgressBar.create(:total => size / Integer(16384), 
-                                                           :format => '%a %B %p%% %r KB/sec',
-                                                           :rate_scale => lambda { |rate| 
-                                                               rate / 1024 },
-                                                                   length: 70)
-                            else
-                                pbar =  ProgressBar.create(:total => size / Integer(16384), 
-                                                           :format => '%a %B %p%% %r KB/sec',
-                                                           :rate_scale => lambda { |rate| 
-                                                               rate / 1024 })
-                            end
-                        end
-                    },
-                    :progress_proc => lambda {|s|
-                        pbar.increment
-                    }) do |response|
+                    encoded_url = Addressable::URI.encode(url)
+                    DManga::display_feedback "\n#{encoded_url}"
+                    pbar = get_progressbar
+                    open(
+                        encoded_url,
+                        :progress_proc => lambda {|s| pbar.increment }
+                    ) do |response|
                         if response.status[1] == "OK"
                             DManga::display_feedback "Salvando imagem em:'#{img_path}'" if @options.verbose
                             File.open(img_path, "wb") do |img| 
@@ -174,29 +169,29 @@ module DManga
         end
 
         # check if the directory exists and 
-        # create a directory relative to download dir
-        def create_dir(name)
-            dir_path = [@options.download_dir, name].join(File::SEPARATOR)
-            DManga::display_feedback "\nCriando diretorio '#{name}' em '#{dir_path}'" if @options.verbose
-            unless Dir.exist? dir_path
-                Dir.mkdir(dir_path) 
+        # create a directory relative to downlaod directory
+        def create_dir(relative_path)
+            absolute_path = [@options.download_dir, relative_path].join(File::SEPARATOR)
+            DManga::display_feedback "\nCriando diretorio '#{relative_path}' em '#{dir_path}'" if @options.verbose
+            unless Dir.exist? absolute_path
+                Dir.mkdir(absolute_path) 
                 puts if @options.verbose ## just a blank line for prettier output
             else
-                DManga::display_feedback "'#{name}' directorio ja existe" if @options.verbose
+                DManga::display_feedback "'#{relative_paht}' directorio ja existe" if @options.verbose
             end
         end
 
         def zip_chapter
-
+            # TODO
         end
 
-        # return the distiny download directory
+        # Returns the download destination directory
         def download_dir
             @options.download_dir
         end
 
         def remove_invalid_simbols(name)
-            # windows OS dont accep these simbols in folder name
+            # windows OS dont accept these simbols in folder name
             name.gsub!(/[\/\\:*?"<>|]/, '_')
         end
     end

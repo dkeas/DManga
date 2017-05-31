@@ -5,14 +5,16 @@ require 'dmanga/util'
 require_relative 'test_helper'
 
 class TestSiteParserBase < Minitest::Test
-    SEARCH_PAGE = [ File.dirname(__FILE__), "files", 
+    SEARCH_PAGE = [ File.dirname(__FILE__), "files",
                     "onepunch-search.html"].join("/")
-    CHAPTER_PAGE = [[File.dirname(__FILE__), "files", 
-                     "onepunch-chapters.html"].join("/"),
-    [File.dirname(__FILE__), "files", 
-     "tomo-chapters.html"].join("/")]
+    CHAPTER_PAGE = [
+        [File.dirname(__FILE__), "files",
+         "onepunch-chapters.html"].join("/"),
+    [File.dirname(__FILE__), "files",
+     "tomo-chapters.html"].join("/")
+    ]
     IMGS_PAGE = [ " ",
-                  [File.dirname(__FILE__), "files", 
+                  [File.dirname(__FILE__), "files",
                    "tokyoghoul-imgs.html"].join("/")]
 
     def setup
@@ -20,8 +22,9 @@ class TestSiteParserBase < Minitest::Test
     end
 
     def test_parse_search_page
-        mangas = [["https://mangahost.net/manga/db-x-saitama-doujinshi",
-                   "DB X Saitama (Doujinshi)"],
+        mangas = [
+            ["https://mangahost.net/manga/db-x-saitama-doujinshi",
+             "DB X Saitama (Doujinshi)"],
         ["https://mangahost.net/manga/fire-punch",
          "Fire Punch"],
          ["https://mangahost.net/manga/one-punch-man",
@@ -31,13 +34,14 @@ class TestSiteParserBase < Minitest::Test
         ["https://mangahost.net/manga/punch",
          "Punch!"],
          ["https://mangahost.net/manga/short-program-girls-type",
-          "Short Program - Girl's Type"]]
+          "Short Program - Girl's Type"]
+        ]
 
         page = File.open(SEARCH_PAGE).read
         stub_request(:get, "http://mangahost.net/find/one-punch").
             to_return(status:[200, "OK"], body: page)
 
-        result = @site_parser.parse("http://mangahost.net/find/one-punch", 
+        result = @site_parser.parse("http://mangahost.net/find/one-punch",
                                     DManga::MangaHostParser::SEARCH_LINK_REGEX)
         assert_equal mangas, result
     end
@@ -48,14 +52,14 @@ class TestSiteParserBase < Minitest::Test
                    'Cap&iacute;tulo #3 - One Punch-Man'],
                    ['https://mangahost.net/manga/one-punch-man/2',
                     'Cap&iacute;tulo #2 - One Punch-Man'],
-                    ['https://mangahost.net/manga/one-punch-man/1', 
+                    ['https://mangahost.net/manga/one-punch-man/1',
                      'Cap&iacute;tulo #1 - One Punch-Man']]
 
         lasts = [['https://mangahost.net/manga/one-punch-man/108',
                   'Cap&iacute;tulo #108 - One Punch-Man'],
-                  ['https://mangahost.net/manga/one-punch-man/107.2', 
+                  ['https://mangahost.net/manga/one-punch-man/107.2',
                    'Cap&iacute;tulo #107.2 - One Punch-Man'],
-                   ['https://mangahost.net/manga/one-punch-man/107.1', 
+                   ['https://mangahost.net/manga/one-punch-man/107.1',
                     'Cap&iacute;tulo #107.1 - One Punch-Man']]
 
         page = File.open(CHAPTER_PAGE[0]).read
@@ -63,7 +67,7 @@ class TestSiteParserBase < Minitest::Test
             to_return(status:[200, "OK"], body: page,
                       headers: { "Content-Type" => "text/html; charset=UTF-8"})
 
-        result = @site_parser.parse("https://mangahost.net/manga/one-punch-man", 
+        result = @site_parser.parse("https://mangahost.net/manga/one-punch-man",
                                     DManga::MangaHostParser::CHAPTER_LINK_REGEX[1])
         assert_equal firsts, result[-3..-1]
         assert_equal lasts, result[0..2]
@@ -73,7 +77,7 @@ class TestSiteParserBase < Minitest::Test
         # test the first threes and last threes
         firsts = [["Capítulo #21-30 - Capítulos do 21 ao 30!",
                    "http://mangahost.net/manga/tomo-chan-wa-onna-no-ko/21-30"],
-                   ["Capítulo #11-20 - Capítulos do 11 ao 20!", 
+                   ["Capítulo #11-20 - Capítulos do 11 ao 20!",
                     "http://mangahost.net/manga/tomo-chan-wa-onna-no-ko/11-20"],
                     ["Capítulo #1-10 - Capítulos do 01 ao 10!",
                      "http://mangahost.net/manga/tomo-chan-wa-onna-no-ko/1-10"]]
@@ -89,7 +93,7 @@ class TestSiteParserBase < Minitest::Test
             to_return(status:[200, "OK"], body: page,
                       headers: { "Content-Type" => "text/html; charset=UTF-8"})
 
-        result = @site_parser.parse("https://mangahost.net/manga/tomo-chan", 
+        result = @site_parser.parse("https://mangahost.net/manga/tomo-chan",
                                     DManga::MangaHostParser::CHAPTER_LINK_REGEX[0])
         assert_equal firsts, result[-3..-1]
         assert_equal lasts, result[0..2]
@@ -108,7 +112,7 @@ class TestSiteParserBase < Minitest::Test
         stub_request(:get, 'https://mangahost.net/manga/tokyo-ghoulre/99').
             to_return(status:[200, "OK"], body: page)
 
-        result = @site_parser.parse("https://mangahost.net/manga/tokyo-ghoulre/99", 
+        result = @site_parser.parse("https://mangahost.net/manga/tokyo-ghoulre/99",
                                     DManga::MangaHostParser::IMG_LINK_REGEX[1])
         assert_equal firsts, result[0..2]
         assert_equal lasts, result[-3..-1]
@@ -173,7 +177,7 @@ class TestSiteParserBase < Minitest::Test
                             'Cap&iacute;tulo #3 - One Punch-Man'],
                             ['https://mangahost.net/manga/one-punch-man/2',
                              'Cap&iacute;tulo #2 - One Punch-Man'],
-                             ['https://mangahost.net/manga/one-punch-man/1', 
+                             ['https://mangahost.net/manga/one-punch-man/1',
                               'Cap&iacute;tulo #1 - One Punch-Man']]
         @site_parser.chapters = chapters
         $stdin = StringIO.new("1-5\n")
@@ -201,7 +205,7 @@ class TestSiteParserBase < Minitest::Test
                             'Cap&iacute;tulo #3 - One Punch-Man'],
                             ['https://mangahost.net/manga/one-punch-man/2',
                              'Cap&iacute;tulo #2 - One Punch-Man'],
-                             ['https://mangahost.net/manga/one-punch-man/1', 
+                             ['https://mangahost.net/manga/one-punch-man/1',
                               'Cap&iacute;tulo #1 - One Punch-Man']]
         @site_parser.chapters = chapters
         $stdin = StringIO.new("1,3,4\n")
@@ -230,7 +234,7 @@ class TestSiteParserBase < Minitest::Test
                             'Cap&iacute;tulo #3 - One Punch-Man'],
                             ['https://mangahost.net/manga/one-punch-man/2',
                              'Cap&iacute;tulo #2 - One Punch-Man'],
-                             ['https://mangahost.net/manga/one-punch-man/1', 
+                             ['https://mangahost.net/manga/one-punch-man/1',
                               'Cap&iacute;tulo #1 - One Punch-Man']]
         @site_parser.chapters = chapters
         $stdin = StringIO.new("todos\n")
@@ -241,19 +245,58 @@ class TestSiteParserBase < Minitest::Test
 
     def test_create_dir
         dir_name = "test_dir"
-        @site_parser.create_dir dir_name 
+        @site_parser.create_dir dir_name
         dir_path = [@site_parser.download_dir, dir_name].join(File::SEPARATOR)
         assert File.exist? dir_path
-        Dir.rmdir dir_path 
+        Dir.rmdir dir_path
     end
-	
-	def test_remove_invlid_simbols
-		invalid_names = ["Tokyo Ghoul:Re", "Tokyo Ghoul\\Re", "Tokyo Ghoul/Re", "Tokyo Ghoul*Re",
-		"should\\remove/any:invalid*character?in<that>string|end"]
-		
-		corrected_names = ["Tokyo Ghoul_Re", "Tokyo Ghoul_Re", "Tokyo Ghoul_Re", "Tokyo Ghoul_Re",
-		"should_remove_any_invalid_character_in_that_string_end"]
-		invalid_names.each{ |n| @site_parser.remove_invalid_simbols(n) }
-		assert_equal corrected_names, invalid_names
-	end
+
+    def test_remove_invlid_simbols
+        invalid_names = ["Tokyo Ghoul:Re", "Tokyo Ghoul\\Re", "Tokyo Ghoul/Re", "Tokyo Ghoul*Re",
+                         "should\\remove/any:invalid*character?in<that>string|end"]
+
+        corrected_names = ["Tokyo Ghoul_Re", "Tokyo Ghoul_Re", "Tokyo Ghoul_Re", "Tokyo Ghoul_Re",
+                           "should_remove_any_invalid_character_in_that_string_end"]
+        invalid_names.each{ |n| @site_parser.remove_invalid_simbols(n) }
+        assert_equal corrected_names, invalid_names
+    end
+
+    def test_imgs_download_normal_uri
+        test_uri = "https://img.mangahost.me/br/mangas_files/shokugeki-no-souma/1/r002.jpg"
+        stub_request(:get, test_uri).
+            to_return(status:[200, "OK"], body: "stub for images file")
+        chp_path = ""
+        original_img_name = "r002.jpg"
+        @site_parser.imgs_download(chp_path, [test_uri])
+        img_path = [@site_parser.download_dir, original_img_name].join(File::SEPARATOR)
+        assert(File.exist?(img_path), "File r002.jpg should exist")
+        File.delete img_path
+    end
+
+    def test_imgs_download_with_uri_that_contains_white_space
+        stub_request(:get, "https://img.mangahost.me/br/mangas_files/elfen-lied/1" +
+                     "/%5BChrono%5D%20Elfen%20Lied%20-%20Volume%2001%20-%20Capitulo%" +
+                     "20001/EL-v01-ch01-001.jpg").
+                     to_return(status:[200, "OK"], body: "stub for images file")
+        chp_path = ""
+        img_uri = ["https://img.mangahost.me/br/mangas_files/elfen-lied/" + 
+                   "1/[Chrono] Elfen Lied - Volume 01 - Capitulo 001/EL-v01-ch01-001.jpg"]
+        original_img_name = "EL-v01-ch01-001.jpg"
+        @site_parser.imgs_download(chp_path, img_uri)
+        img_path = [@site_parser.download_dir, original_img_name].join(File::SEPARATOR)
+        assert(File.exist?(img_path), "File EL-v01-ch01-001.jpg should exist")
+        File.delete img_path
+    end
+
+    def test_imgs_download_with_uri_that_utf8_chars
+        test_uri = "https://img.mangahost.me/br/mangas_files/shokugeki-no-souma/1/Créditos.jpg"
+        stub_request(:get, test_uri).
+            to_return(status:[200, "OK"], body: "stub for images file")
+        chp_path = ""
+        original_img_name = "Créditos.jpg"
+        @site_parser.imgs_download(chp_path, [test_uri])
+        img_path = [@site_parser.download_dir, original_img_name].join(File::SEPARATOR)
+        assert(File.exist?(img_path), "File Créditos.jpg should exist")
+        File.delete img_path
+    end
 end
