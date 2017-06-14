@@ -3,7 +3,7 @@ require 'dmanga/os'
 require 'ruby-progressbar'
 require 'open-uri'
 require 'addressable/uri'
-# require 'pry'
+require 'pry'
 # require 'formatador'
 
 module DManga
@@ -141,8 +141,9 @@ module DManga
 
         # download images to a path relative to download directory
         def imgs_download(chp_path, imgs_urls)
+            #binding.pry
             imgs_urls.each do |url|
-                original_filename =  url.slice(/(?u)(\w|[_-])+\.(png|jpg)/)
+                original_filename =  url.slice(/(?u)(\w|[_-])+\.(png|jpg)/i)
                 #original_filename =  url.slice(/(\w|[_-])+\.(png|jpg)/)
 
                 img_path = [@options.download_dir,

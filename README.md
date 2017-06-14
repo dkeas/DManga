@@ -166,10 +166,10 @@ Mostra detalhes da execução do programa.
 
 ### Exemplos
 
-`dmanga -d "C:\window\users\images\manga e animes" "One piece"`
+`dmanga -d "C:\Users\usuario\manga e animes" "One piece"`
 
 No windows, baixe 'One piece' para
-'C:\window\users\images\manga e animes'
+'C:\Users\usuario\images\manga e animes'
 
 `dmanga "One punch man"`
 

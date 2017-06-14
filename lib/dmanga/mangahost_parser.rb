@@ -22,8 +22,8 @@ module DManga
         ]
 
         # regex to extract images' url from chapter page
-        IMG_LINK_REGEX = [/img_\d+['"]\s+src=['"](.*?)['"]/,
-                          /url['"]:['"](.*?)['"]\}/]
+        IMG_LINK_REGEX = [/img_\d+['"]\s+src=['"](.*?)['"]/i,
+                          /url['"]:['"](.*?)['"]\}/i]
 
         def download
 
