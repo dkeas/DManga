@@ -1,7 +1,7 @@
 # require 'dmanga/site_parser_base'
 require 'dmanga/site_parser_base'
 require 'dmanga/zip_file_generator'
-#require 'pry'
+require 'pry'
 
 module DManga
     class MangaHostParser < SiteParserBase
@@ -22,8 +22,8 @@ module DManga
         ]
 
         # regex to extract images' url from chapter page
-        IMG_LINK_REGEX = [/img_\d+['"]\s+src=['"](.*?)['"]/i,
-                          /url['"]:['"](.*?)['"]\}/i]
+        IMG_LINK_REGEX = [/img_\d+['"]\s+src=['"](.*?)['"]/,
+                          /url['"]:['"](.*?)['"]\}/]
 
         def download
 
@@ -54,10 +54,10 @@ module DManga
             # prompt user to select chapters to download
             select_chapters
 
-			# remove simbols that cannot be used in folder's name on windows
-			remove_invalid_simbols(@manga_name)
+            # remove simbols that cannot be used in folder's name on windows
+            remove_invalid_simbols(@manga_name)
             # create manga directory
-			remove_invalid_simbols(@manga_name)
+            remove_invalid_simbols(@manga_name)
             create_dir(@manga_name)
 
             # download selected chapters
@@ -68,7 +68,8 @@ module DManga
                     # binding.pry # DEBUG
                     if resul.empty?
                         page.scan(IMG_LINK_REGEX[1]) do |img|
-                            resul << img[0].gsub!(%r{\\}, "")
+                            #resul << img[0].gsub!(%r{\\}, "")
+                            resul << img[0]
                         end
                     end
 
@@ -80,14 +81,16 @@ module DManga
 
                         #correct créditos img problem
                         correct_image_uri(img)
+
+                        img.gsub!(%r{\\}, "")
                     end
                     resul
                 end
 
                 # create chapter directory relative to manga directory
                 chapter_name = "#{chapter[0]}"
-				# remove simbols that cannot be used in folder's name on windows
-				remove_invalid_simbols chapter_name
+                # remove simbols that cannot be used in folder's name on windows
+                remove_invalid_simbols chapter_name
                 chapter_dir = "#{@manga_name}/#{chapter_name}"
                 create_dir(chapter_dir)
 
@@ -99,17 +102,34 @@ module DManga
         private
         # Due to problems with open-uri and utf-8
         # some chapters' name need to be corrected.
-		# substitute Cap$amptulo for capitulo.
+        # substitute Cap$amptulo for capitulo.
         def correct_chapters_name
             @chapters.each {|chapter| chapter[0].sub!(/[cC]ap.*?tulo/, "capitulo")}
         end
 
+        UNICODE_TABLE = {
+            "\\u00e1" => "\u00e1",
+            "\\u00e9" => "\u00e9",
+            "\\u00ed" => "\u00ed"
+            #'\\u00c1' => "\u00c1" 
+            #'\\u00c1' => "\u00c1" 
+        }
+
         # Due to problems with open-uri and utf-8
         # some images uris need to be corrected.
-		# substitute Cru00e9ditos for Créditos.
+        # substitute Cru00e9ditos for Créditos.
         # one uri at a time
         def correct_image_uri(img_uri)
-            img_uri.sub!(/[cC]r.{2,10}ditos/, "Créditos")
+            #if img_uri =~ /\\u..../i
+            result = img_uri.scan(/\\u..../i) #do |r|
+            #binding.pry
+            result.each do |r|
+                img_uri.sub!(r, UNICODE_TABLE[r.downcase])
+            end
+            #img_uri.gsub!($&, UNICODE_TABLE[$&.downcase])
+            #binding.pry
+            #exit
+            #end
             #img_uri.sub!(/[cC]r.*?ditos/, "Créditos")
         end
     end
