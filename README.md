@@ -83,7 +83,7 @@ Ex2:
 
 Ex3:
 <!--![exemplo de uso](https://github.com/david-endrew/somethings/blob/master/uso_exemplo.gif)-->
-![exemplo de uso](https://github.com/dkeas/somethings/blob/master/dmanga_exemplo.gif)
+![exemplo de uso](https://github.com/dkeas/somethings/blob/master/uso_exemplo.gif)
 
 obs: A pasta padrão de destino dos downloads é a pasta Downloads mas 
 você pode dizer ao script a pasta de destino do downloads com a 
