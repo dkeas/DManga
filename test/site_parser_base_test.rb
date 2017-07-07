@@ -288,7 +288,7 @@ class TestSiteParserBase < Minitest::Test
         File.delete img_path
     end
 
-    def test_imgs_download_with_uri_that_utf8_chars
+    def test_imgs_download_with_uri_that_contains_utf8_chars
         test_uri = "https://img.mangahost.me/br/mangas_files/shokugeki-no-souma/1/Créditos.jpg"
         stub_request(:get, test_uri).
             to_return(status:[200, "OK"], body: "stub for images file")

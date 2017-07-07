@@ -8,7 +8,7 @@ require 'addressable/uri'
 
 module DManga
     class SiteParserBase
-        USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0"
+        USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0"
 
         attr_accessor :manga_name, :manga_url,
             :chapters, :verbose
@@ -139,11 +139,10 @@ module DManga
             end
         end
 
-        # download images to a path relative to download directory
+        # download images to path relative to Downloads directory
         def imgs_download(chp_path, imgs_urls)
             imgs_urls.each do |url|
                 original_filename =  url.slice(/(?u)(\w|[_-])+\.(png|jpg)/i)
-                #original_filename =  url.slice(/(\w|[_-])+\.(png|jpg)/)
 
                 img_path = [@options.download_dir,
                             chp_path, 
@@ -153,7 +152,7 @@ module DManga
                     DManga::display_feedback "\n#{encoded_url}"
                     pbar = get_progressbar
                     open(
-                        encoded_url,
+                        encoded_url, "User-Agent" => USER_AGENT,
                         :progress_proc => lambda {|s| pbar.increment }
                     ) do |response|
                         if response.status[1] == "OK"
@@ -161,6 +160,8 @@ module DManga
                             File.open(img_path, "wb") do |img| 
                                 img.puts response.read
                             end
+                        else
+                            puts "Error #{reponse.status}"
                         end
                     end
                     puts
@@ -172,7 +173,7 @@ module DManga
         # create a directory relative to downlaod directory
         def create_dir(relative_path)
             absolute_path = [@options.download_dir, relative_path].join(File::SEPARATOR)
-	    DManga::display_feedback "\nCriando diretorio '#{relative_path}' em '#{@options.download_dir}'" if @options.verbose
+            DManga::display_feedback "\nCriando diretorio '#{relative_path}' em '#{@options.download_dir}'" if @options.verbose
             unless Dir.exist? absolute_path
                 Dir.mkdir(absolute_path) 
                 puts if @options.verbose ## just a blank line for prettier output

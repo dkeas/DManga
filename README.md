@@ -59,7 +59,7 @@ Pode ser necessário usar o sudo.
 
 Você pode atualizar o script/programa com:
 
-`gem update dmanga`
+`$ gem update dmanga`
 
 Atualize sempre para obter melhoras (desempenho ou novas funcionalidades) e correções de bugs.
 
@@ -135,7 +135,7 @@ uma das sequintes opções:
 
 3. Para selecionar capitulos especificos:
 
-    `numeroDoCapitulo,numeroDoCapitulo,numeroDoCapitulo`
+    `numeroDoCapitulo,numeroDoCapitulo,numeroDoCapitulo...`
 
     Ex:
 
