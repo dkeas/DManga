@@ -46,9 +46,9 @@ Você pode atualizar o script/programa com:
 
 `gem update dmanga`
 
-> E para remover a versão anterior:
+E para remover a versão anterior:
 
-> `gem clean`
+`gem clean`
 
 Atualize sempre para obter melhoras (desempenho ou novas funcionalidades) e correções de bugs.
 
@@ -68,6 +68,10 @@ Pode ser necessário usar o sudo.
 Você pode atualizar o script/programa com:
 
 `$ gem update dmanga`
+
+E para remover a versão anterior:
+
+`$ gem clean`
 
 Atualize sempre para obter melhoras (desempenho ou novas funcionalidades) e correções de bugs.
 
