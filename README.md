@@ -174,7 +174,7 @@ Mostra a messagem de ajuda e sai.
 
 Mostra detalhes da execução do programa.
 
-### Exemplos
+### Exemplos de uso
 
 `dmanga -d "C:\Users\usuario\images\manga e animes" "One piece"`
 
