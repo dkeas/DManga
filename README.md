@@ -19,6 +19,10 @@ e pronto o script fará os downloads do capitulos selecionados.
 
 > `gem update dmanga`
 
+> E para remover a versão anterior:
+
+> `gem clean`
+
 ## Instalação
 
 ### Windows
@@ -41,6 +45,10 @@ Com isso o script/programa será instalado.
 Você pode atualizar o script/programa com:
 
 `gem update dmanga`
+
+> E para remover a versão anterior:
+
+> `gem clean`
 
 Atualize sempre para obter melhoras (desempenho ou novas funcionalidades) e correções de bugs.
 
