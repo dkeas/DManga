@@ -9,9 +9,7 @@ e pronto o script fará os downloads do capitulos selecionados.
 
 #### Atualização 
 
-> - Corrigido erro com download de shokugeki no souma 
-> - Corrigido erro com download de elfen lied 
-> - Corrigido erro com download de tokyo ghoul:re no windows  
+> - Corrigido erro com download de arachnid, uwakoi (não baixem isso) e outros.
 
 > **Se acontecer qualquer erro atualize o script/programa (esse erro provalvemente já foi corrigido)**.  
 
@@ -176,7 +174,7 @@ Mostra a messagem de ajuda e sai.
 
 Mostra detalhes da execução do programa.
 
-### Exemplos
+### Exemplos de uso
 
 `dmanga -d "C:\Users\usuario\images\manga e animes" "One piece"`
 
