@@ -9,6 +9,7 @@ e pronto o script fará os downloads do capitulos selecionados.
 
 #### Atualização 
 
+> - **Corrigido erro com denpendencia do arquivo pry que faz o script não executar**.
 > - Corrigido erro com download de arachnid, uwakoi (não baixem isso) e outros.
 
 > **Se acontecer qualquer erro atualize o script/programa (esse erro provalvemente já foi corrigido)**.  
