@@ -1,7 +1,7 @@
 # require 'dmanga/site_parser_base'
 require 'dmanga/site_parser_base'
 require 'dmanga/zip_file_generator'
-require 'pry'
+#require 'pry'
 
 module DManga
     class MangaHostParser < SiteParserBase
