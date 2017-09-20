@@ -65,10 +65,8 @@ module DManga
                 imgs_url = parse(chapter[1], IMG_LINK_REGEX[0]) do |resul, page|
                     # use second pattern if the first returns a empty
                     # array
-                    # binding.pry # DEBUG
                     if resul.empty?
                         page.scan(IMG_LINK_REGEX[1]) do |img|
-                            #resul << img[0].gsub!(%r{\\}, "")
                             resul << img[0]
                         end
                     end
@@ -111,8 +109,6 @@ module DManga
             "\\u00e1" => "\u00e1",
             "\\u00e9" => "\u00e9",
             "\\u00ed" => "\u00ed"
-            #'\\u00c1' => "\u00c1" 
-            #'\\u00c1' => "\u00c1" 
         }
 
         # Due to problems with open-uri and utf-8
@@ -120,17 +116,10 @@ module DManga
         # substitute Cru00e9ditos for Créditos.
         # one uri at a time
         def correct_image_uri(img_uri)
-            #if img_uri =~ /\\u..../i
-            result = img_uri.scan(/\\u..../i) #do |r|
-            #binding.pry
+            result = img_uri.scan(/\\u..../i)
             result.each do |r|
                 img_uri.sub!(r, UNICODE_TABLE[r.downcase])
             end
-            #img_uri.gsub!($&, UNICODE_TABLE[$&.downcase])
-            #binding.pry
-            #exit
-            #end
-            #img_uri.sub!(/[cC]r.*?ditos/, "Créditos")
         end
     end
 end

@@ -182,9 +182,9 @@ module DManga
             end
         end
 
-        def zip_chapter
-            # TODO
-        end
+        #def zip_chapter
+        ## TODO
+        #end
 
         # Returns the download destination directory
         def download_dir
