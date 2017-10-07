@@ -3,8 +3,6 @@ require 'dmanga/os'
 require 'ruby-progressbar'
 require 'open-uri'
 require 'addressable/uri'
-#require 'pry'
-# require 'formatador'
 
 module DManga
     class SiteParserBase

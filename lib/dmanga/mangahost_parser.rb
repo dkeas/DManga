@@ -1,7 +1,5 @@
-# require 'dmanga/site_parser_base'
 require 'dmanga/site_parser_base'
 require 'dmanga/zip_file_generator'
-#require 'pry'
 
 module DManga
     class MangaHostParser < SiteParserBase
@@ -15,7 +13,6 @@ module DManga
         # Regex to extract chapters' url from manga page.
         # Manga host has two diferent manga pages.
         # One to medium/short mangas and one to big mangas
-        # /capitulo['"]\stitle=['"]Ler Online\s+-\s+(.*?)['"]\s+href=['"](.*?)['"]/, # for short/medium mangas
         CHAPTER_LINK_REGEX = [
             /capitulo.*?Ler\s+Online\s+-\s+(.*?)['"]\s+href=['"](.*?)['"]/, # for short/medium mangas
             /<a\s+href=['"](.*?)['"]\s+title=['"]Ler\s+Online\s+-\s+(.*?)\s+\[\]/ # for big mangas
@@ -32,7 +29,6 @@ module DManga
 
             search("#{SEARCH_URL}#{guess_manga_name}", SEARCH_LINK_REGEX)
 
-            # puts "executing chapters".green ## DEBUG
             # Due the organazation of the chapters page the chapters are
             # extracted in reverse order
             @chapters = parse(@manga_url, CHAPTER_LINK_REGEX[0]) do |resul, page|
