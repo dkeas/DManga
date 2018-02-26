@@ -17,7 +17,7 @@ desc "change to master branch"
 task :master do system "git checkout master" end
 
 desc "exec the app"
-task :exe do system "ruby -Ilib exe/dmanga denki ga honya" end
+task :exe do system "ruby -Ilib exe/dmanga 'denki ga honya' -v" end
 
 desc "console with app loaded"
 task :console do system "bundle exec bin/console" end

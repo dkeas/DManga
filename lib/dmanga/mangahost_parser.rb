@@ -5,7 +5,8 @@ module DManga
   class MangaHostParser < SiteParserBase
 
     # url used to search in the site
-    SEARCH_URL = "https://mangahost.net/find/"
+    # SEARCH_URL = "https://mangahost.net/find/"
+    SEARCH_URL = "https://mangahost.cc/find/"
 
     # regex to extract url of found mangas
     SEARCH_LINK_REGEX = /entry-title">\s*<a\s*href="(.*)?"\s*title="(.*)"/
@@ -21,7 +22,7 @@ module DManga
     # regex to extract images' url from chapter page
     IMG_LINK_REGEX = [/img_\d+['"]\s+src=['"](.*?)['"]/,
     /url['"]:['"](.*?)['"]\}/]
-    
+
     def download
 
       # white space is not allowed in the search url.
@@ -94,7 +95,7 @@ module DManga
     end
 
     private
-    # Due to problems with open-uri and utf-8
+    # Due to problems with open-uri and unicode
     # some chapters' name need to be corrected.
     # substitute Cap$amptulo for capitulo.
     def correct_chapters_name
@@ -110,7 +111,7 @@ module DManga
     # Due to problems with open-uri and utf-8
     # some images uris need to be corrected.
     # substitute Cru00e9ditos for Créditos.
-    # one uri at a time
+    # one url at a time
     def correct_image_uri(img_uri)
       result = img_uri.scan(/\\u..../i)
       result.each do |r|

@@ -12,46 +12,46 @@ begin
   mangahost.download
   DManga::display_feedback "\nTodos os download concluidos"
 
-rescue URI::InvalidURIError => uri_error
-  DManga::display_error("Nome do manga não deve conter acentos, cecedilha ou simbolos", 
-                        uri_error)
+  rescue URI::InvalidURIError => uri_error
+    DManga::display_error("Nome do manga não deve conter acentos, cecedilha ou simbolos",
+                          uri_error)
 
-rescue Errno::ECONNRESET => con_error
-  DManga::display_error("Não foi possivel conectar a internet",
-                        con_error)
+  rescue Errno::ECONNRESET => con_error
+    DManga::display_error("Não foi possivel conectar a internet",
+                          con_error)
 
-rescue OpenURI::HTTPError => http_error
-  DManga::display_error("Servidor recusando conexao",
-                        http_error)
+  rescue OpenURI::HTTPError => http_error
+    DManga::display_error("Servidor recusando conexao",
+                          http_error)
 
-rescue DManga::MangaNotFoundError => manga_error
-  DManga::display_warn "\t#{manga_error}" 
-  DManga::display_feedback "\tExiting"
+  rescue DManga::MangaNotFoundError => manga_error
+    DManga::display_warn "\t#{manga_error}"
+    DManga::display_feedback "\tExiting"
 
-rescue Net::ReadTimeout => timeout_error
-  DManga::display_error("Site demorou demais para responder",
-                        timeout_error)
+  rescue Net::ReadTimeout => timeout_error
+    DManga::display_error("Site demorou demais para responder",
+                          timeout_error)
 
-rescue Net::OpenTimeout => timeout_error
-  DManga::display_error("Site demorou demais para responder",
-                        timeout_error)
+  rescue Net::OpenTimeout => timeout_error
+    DManga::display_error("Site demorou demais para responder",
+                          timeout_error)
 
-rescue SocketError => sock_error
-  DManga::display_error("Nao foi possivel conectar a internet",
-                        sock_error)
+  rescue SocketError => sock_error
+    DManga::display_error("Nao foi possivel conectar a internet",
+                          sock_error)
 
-rescue OpenSSL::SSL::SSLError => ssl_error
-  DManga::display_error("Não foi possivel conectar a internet",
-                        ssl_error)
+  rescue OpenSSL::SSL::SSLError => ssl_error
+    DManga::display_error("Não foi possivel conectar a internet",
+                          ssl_error)
 
-rescue  Errno::ENETUNREACH => error
-  DManga::display_error("Não foi possivel conectar a internet",
-                        error)
+  rescue  Errno::ENETUNREACH => error
+    DManga::display_error("Não foi possivel conectar a internet",
+                          error)
 
-rescue  Errno::ENOENT => error
-  DManga::display_error("Diretorio epecificado não existe",
-                        error)
+  rescue  Errno::ENOENT => error
+    DManga::display_error("Diretorio epecificado não existe",
+                          error)
 
-rescue Interrupt
-  DManga::display_feedback("\nBye")
-end
+  rescue Interrupt
+    DManga::display_feedback("\nBye")
+  end

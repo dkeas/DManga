@@ -14,12 +14,12 @@ module DManga
         def initialize(argv)
             @options = Options.new(argv)
             @manga_url = nil
-            # manga_name also is used as manga directory name
+            # manga_name is also used as manga directory name
             @manga_name = nil
             @chapters = nil
         end
 
-        # Parse the html and colect links that match the pattern.
+        # Parse the html and extract links that match the pattern.
         # Can receive a block.
         def parse(url, regex)
             DManga::display_feedback "\nfetching #{url}" if @options.verbose
@@ -110,7 +110,7 @@ module DManga
                     aux = []
                     # downloads are processed in reverse order (to make
                     # it in crescent order)so the answer is reversed too
-                    answer.reverse_each do |c| 
+                    answer.reverse_each do |c|
                         chp = @chapters[Integer(c) * -1]
                         aux << chp unless chp.nil?
                     end
@@ -126,12 +126,12 @@ module DManga
         # return a progressbar suitable to the user operating system
         def get_progressbar
             if DManga::OS.windows?
-                return  ProgressBar.create(:title => 'Baixando', 
+                return  ProgressBar.create(:title => 'Baixando',
                                            :starting_at => 20,
                                            :length => 70,
                                            :total => nil)
             else
-                return  ProgressBar.create(:title => 'Baixando', 
+                return  ProgressBar.create(:title => 'Baixando',
                                            :starting_at => 20,
                                            :total => nil)
             end
@@ -143,7 +143,7 @@ module DManga
                 original_filename =  url.slice(/(?u)(\w|[_-])+\.(png|jpg)/i)
 
                 img_path = [@options.download_dir,
-                            chp_path, 
+                            chp_path,
                             original_filename].join(File::SEPARATOR)
                 unless File.exist? img_path
                     encoded_url = Addressable::URI.encode(url)
@@ -155,7 +155,7 @@ module DManga
                     ) do |response|
                         if response.status[1] == "OK"
                             DManga::display_feedback "Salvando imagem em:'#{img_path}'" if @options.verbose
-                            File.open(img_path, "wb") do |img| 
+                            File.open(img_path, "wb") do |img|
                                 img.puts response.read
                             end
                         else
@@ -167,13 +167,13 @@ module DManga
             end
         end
 
-        # check if the directory exists and 
+        # check if the directory exists and
         # create a directory relative to downlaod directory
         def create_dir(relative_path)
             absolute_path = [@options.download_dir, relative_path].join(File::SEPARATOR)
             DManga::display_feedback "\nCriando diretorio '#{relative_path}' em '#{@options.download_dir}'" if @options.verbose
             unless Dir.exist? absolute_path
-                Dir.mkdir(absolute_path) 
+                Dir.mkdir(absolute_path)
                 puts if @options.verbose ## just a blank line for prettier output
             else
                 DManga::display_feedback "'#{relative_path}' directorio ja existe" if @options.verbose

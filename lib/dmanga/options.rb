@@ -7,7 +7,7 @@ module DManga
         def initialize(argv)
             @download_dir = DEFAULT_DOWNLOAD_DIR
             @verbose = false
-            @site = "mangahost.net"
+            @site = "mangahost.cc"
             parse(argv)
             @manga = argv[0]
         end
@@ -23,11 +23,11 @@ module DManga
                     exit
                 end
 
-                opts.on('-v', '--verbose', 
+                opts.on('-v', '--verbose',
                         'Exibe informações da execução do programa.') do
                     @verbose = true
                 end
-                opts.on('-d', '--directory DIRETORIO', 
+                opts.on('-d', '--directory DIRETORIO',
                         'O diretorio de destino do download. Padrão é Downloads.') do |path|
                     @download_dir = path
                 end
