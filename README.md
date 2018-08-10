@@ -2,7 +2,7 @@
 
 DManga é um script/programa ruby multiplataforma Window/Linux/Mac 
 para baixar mangas do site mangahost. Com ele voce pode baixar 
-qualquer manga hospedado em mangahost.net (site br de hospedagem de
+qualquer manga hospedado em mangahost (site br de hospedagem de
 manga) de forma automatizada e sem restrição de quantidade. Basta 
 dizer o nome do manga e selecionar os capitulos que deseja baixar 
 e pronto o script fará os downloads do capitulos selecionados.
