@@ -261,6 +261,13 @@ class TestSiteParserBase < Minitest::Test
         assert_equal corrected_names, invalid_names
     end
 
+    def test_remove_dot_from_folder_name
+      invalid_names = ["narimashita......", "llll...lll"]
+      corrected_names = ["narimashita______", "llll___lll"]
+      invalid_names.each{ |n| @site_parser.remove_invalid_simbols(n) }
+      assert_equal corrected_names, invalid_names
+    end
+
     def test_imgs_download_normal_uri
         test_uri = "https://img.mangahost.me/br/mangas_files/shokugeki-no-souma/1/r002.jpg"
         stub_request(:get, test_uri).
