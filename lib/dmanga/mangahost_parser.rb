@@ -27,6 +27,7 @@ module DManga
 
       # white space is not allowed in the search url.
       guess_manga_name = @options.manga.gsub(/\s/, '+') # Replace ' ' by  '+'
+      guess_manga_name = encode_manga_name(guess_manga_name)
 
       search("#{SEARCH_URL}#{guess_manga_name}", SEARCH_LINK_REGEX)
 
@@ -107,6 +108,12 @@ module DManga
       "\\u00e9" => "\u00e9",
       "\\u00ed" => "\u00ed"
     }
+
+    # this will allow utf-8 characters in manga name
+    # e.g. japanese names
+    def encode_manga_name(manga_name)
+      Addressable::URI.encode(manga_name)
+    end
 
     # Due to problems with open-uri and utf-8
     # some images uris need to be corrected.
