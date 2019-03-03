@@ -191,7 +191,7 @@ module DManga
 
     def remove_invalid_simbols(name)
       # windows OS dont accept these simbols in folder name
-      name.gsub!(%r{[/\\:*?"<>|.]}, '_')
+      name.gsub!(%r{[/\\:*?"<>|]|(\.+$)|(^\.+)}, '_')
     end
   end
 end

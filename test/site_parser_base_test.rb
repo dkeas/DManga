@@ -262,10 +262,17 @@ class TestSiteParserBase < Minitest::Test
     end
 
     def test_remove_dot_from_folder_name
-      invalid_names = ["narimashita......", "llll...lll"]
-      corrected_names = ["narimashita______", "llll___lll"]
+      # remove dots if they are in the end or in the start of the name
+      invalid_names = ['narimashita......', 'lllllll...', '...mmmmm', '...........jjjjjjjjjj']
+      corrected_names = ['narimashita_', 'lllllll_', '_mmmmm', '_jjjjjjjjjj']
       invalid_names.each{ |n| @site_parser.remove_invalid_simbols(n) }
       assert_equal corrected_names, invalid_names
+
+      # don't remove dots that are in the middle of the name
+      valid_names = ['name.of.manga', 'name...........manga']
+      expect_result = ['name.of.manga', 'name...........manga']
+      valid_names.each { |n| @site_parser.remove_invalid_simbols(n) }
+      assert_equal expect_result, valid_names
     end
 
     def test_imgs_download_normal_uri
