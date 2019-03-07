@@ -1,11 +1,11 @@
 # DManga
 
 DManga é um script/programa ruby multiplataforma Window/Linux/Mac
-para baixar mangas do site mangahost. Com ele voce pode baixar
+para baixar mangas do site mangahost. Com ele você pode baixar
 qualquer manga hospedado em mangahost (site br de hospedagem de
 manga) de forma automatizada e sem restrição de quantidade. Basta
-dizer o nome do manga e selecionar os capitulos que deseja baixar
-e pronto o script fará os downloads do capitulos selecionados.
+dizer o nome do manga e selecionar os capítulos que deseja baixar
+e pronto o script fará os downloads do capítulos selecionados.
 
 #### Atualização
 
@@ -53,7 +53,7 @@ Atualize sempre para obter melhoras (desempenho ou novas funcionalidades) e corr
 ### Linux (debian/ubuntu)
 Abra o terminal.
 
-Se voce não tem o ruby instalado:
+Se você não tem o ruby instalado:
 
 `$ sudo apt-get install ruby`
 
@@ -101,33 +101,33 @@ Ex4:
 <!--![exemplo de uso](https://github.com/david-endrew/somethings/blob/master/uso_exemplo.gif)-->
 ![exemplo de uso](https://github.com/dkeas/somethings/blob/master/uso_exemplo.gif)
 
-obs: A pasta padrão de destino dos downloads é a pasta Downloads mas
-você pode dizer ao script a pasta de destino do downloads com a
-opçao -d, veja [Opções](#opções) para mais detalhes.
+obs: A pasta padrão de destino dos downloads é a pasta *Downloads* mas
+você pode dizer ao script a pasta de destino dos downloads com a
+opção -d, veja [Opções](#opções) para mais detalhes.
 
 obs: o nome do manga não precisa ser o nome exato, pode ser parte do
 nome ou alguma palavra contida no nome, em todo caso o script/programa
 fará uma busca no site com o nome passado.
 
-obs: você pode cancelar a execução do script/program a qualquer hora
+obs: você pode cancelar a execução do script/programa a qualquer hora
 clicando ctrl-c no prompt.
 
 **obs: se o nome do manga contiver mais de uma palavra coloque-o
 entre aspas**.
 
-O scrip/program mostará os mangas encontrados na busca no site
+O scrip/programa mostrará os mangas encontrados na busca no site
 um de cada vez, selecione o que corresponde a sua busca.
 
-Após será mostrada a lista de capitulos encontrados para aquele manga.
+Após será mostrada a lista de capítulos encontrados para aquele manga.
 
-Quando ele perguntar "Quais capitulos você que baixar?", digite
-uma das sequintes opções:
+Quando ele perguntar "Quais capítulos você que baixar?", digite
+uma das seguintes opções:
 
-1. Para baixar todos so capitulos:
+1. Para baixar todos os capítulos:
 
     `todos`
 
-    Baixa todos os capitulos disponiveis.
+    Baixa todos os capítulos disponíveis.
 
 2. Para selecionar um intervalo digite:
 
@@ -141,15 +141,15 @@ uma das sequintes opções:
 
     Ex2:
 
-    `1-1l`
+    `1-11`
 
     Baixa do capitulo 1 ao 11.
 
-    Se voce quiser baixar de um certo capitulo ao ultimo, basta digitar
+    Se você quiser baixar de um certo capitulo ao ultimo, basta digitar
     no limite superior do intervalo um numero maior que o numero do
     ultimo capitulo (ex: 999999).
 
-3. Para selecionar capitulos especificos:
+3. Para selecionar capítulos específicos:
 
     `numeroDoCapitulo,numeroDoCapitulo,numeroDoCapitulo...`
 
@@ -157,16 +157,16 @@ uma das sequintes opções:
 
     `2,5,130`
 
-    Baixa os capitulos 2, 5 e 130.
+    Baixa os capítulos 2, 5 e 130.
 
-    Obs: os numeros dos capitulos devem ser digitados separados por
+    Obs: os números dos capítulos devem ser digitados separados por
     virgula e **sem espaços**.
 
 ### Opções
 
 `--version`
 
-Mostra o numero da versao do programa e sai.
+Mostra o numero da versão do programa e sai.
 
 `-d <pasta de download>, --directory <pasta de download>`
 
@@ -174,7 +174,7 @@ Define a pasta de destino do downlaod.
 
 `-h , --help`
 
-Mostra a messagem de ajuda e sai.
+Mostra a mensagem de ajuda e sai.
 
 `-v , --verbose`
 
@@ -184,7 +184,7 @@ Mostra detalhes da execução do programa.
 
 `dmanga -d "C:\Users\usuario\images\manga e animes" "One piece"`
 
-No windows, baixe 'One piece' para 'C:\Users\usuario\images\manga e animes'
+No Windows, baixe 'One piece' para 'C:\Users\usuario\images\manga e animes'
 
 `dmanga "One punch man"`
 
@@ -192,13 +192,13 @@ Baixe 'One punch man' para 'Downloads'.
 
 `dmanga -d /home/usuario/Images/mangas tomo-chan`
 
-No linux baixe 'tomo-chan' para '/home/usuario/Images/mangas'.
+No Linux baixe 'tomo-chan' para '/home/usuario/Images/mangas'.
 
-### Exemplos de seleção de capitulos
+### Exemplos de seleção de capítulos
 
 `todos`
 
-Baixa todos os capitulos.
+Baixa todos os capítulos.
 
 `34-96`
 
@@ -206,11 +206,11 @@ Baixa do capitulo 34 ao 96.
 
 `1,3,55`
 
-Baixa os capitulos 1, 3 e 55.
+Baixa os capítulos 1, 3 e 55.
 
 `34,124`
 
-Baixa os capitulos 34 e 124.
+Baixa os capítulos 34 e 124.
 
 `200`
 
