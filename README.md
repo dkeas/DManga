@@ -1,10 +1,10 @@
 # DManga
 
-DManga é um script/programa ruby multiplataforma Window/Linux/Mac 
-para baixar mangas do site mangahost. Com ele voce pode baixar 
+DManga é um script/programa ruby multiplataforma Window/Linux/Mac
+para baixar mangas do site mangahost. Com ele voce pode baixar
 qualquer manga hospedado em mangahost (site br de hospedagem de
-manga) de forma automatizada e sem restrição de quantidade. Basta 
-dizer o nome do manga e selecionar os capitulos que deseja baixar 
+manga) de forma automatizada e sem restrição de quantidade. Basta
+dizer o nome do manga e selecionar os capitulos que deseja baixar
 e pronto o script fará os downloads do capitulos selecionados.
 
 #### Atualização
@@ -24,10 +24,10 @@ e pronto o script fará os downloads do capitulos selecionados.
 ## Instalação
 
 ### Windows
-Primeiro você precisa ter ruby instalado, você pode baixar ruby 
-deste [site](https://github.com/oneclick/rubyinstaller2/releases), 
-basta baixar um dos instaladores que estão abaixo do titulo 'Downloads', 
-algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma 
+Primeiro você precisa ter ruby instalado, você pode baixar ruby
+deste [site](https://github.com/oneclick/rubyinstaller2/releases),
+basta baixar um dos instaladores que estão abaixo do titulo 'Downloads',
+algo com o nome similar a rubyinstaller-2.4.1-1rc3-x86.exe (pode ser uma
 versão superior) para arquitetura 32 bits e rubyinstaller-2.4.1-1rc3-x64.exe para 64.
 
 Com o ruby instalado. Abra o prompt de comando.
@@ -101,8 +101,8 @@ Ex4:
 <!--![exemplo de uso](https://github.com/david-endrew/somethings/blob/master/uso_exemplo.gif)-->
 ![exemplo de uso](https://github.com/dkeas/somethings/blob/master/uso_exemplo.gif)
 
-obs: A pasta padrão de destino dos downloads é a pasta Downloads mas 
-você pode dizer ao script a pasta de destino do downloads com a 
+obs: A pasta padrão de destino dos downloads é a pasta Downloads mas
+você pode dizer ao script a pasta de destino do downloads com a
 opçao -d, veja [Opções](#opções) para mais detalhes.
 
 obs: o nome do manga não precisa ser o nome exato, pode ser parte do
@@ -112,10 +112,10 @@ fará uma busca no site com o nome passado.
 obs: você pode cancelar a execução do script/program a qualquer hora
 clicando ctrl-c no prompt.
 
-**obs: se o nome do manga contiver mais de uma palavra coloque-o 
+**obs: se o nome do manga contiver mais de uma palavra coloque-o
 entre aspas**.
 
-O scrip/program mostará os mangas encontrados na busca no site 
+O scrip/program mostará os mangas encontrados na busca no site
 um de cada vez, selecione o que corresponde a sua busca.
 
 Após será mostrada a lista de capitulos encontrados para aquele manga.
@@ -188,11 +188,11 @@ No windows, baixe 'One piece' para 'C:\Users\usuario\images\manga e animes'
 
 `dmanga "One punch man"`
 
-Baixe 'One punch man' para 'Downloads'. 
+Baixe 'One punch man' para 'Downloads'.
 
 `dmanga -d /home/usuario/Images/mangas tomo-chan`
 
-No linux baixe 'tomo-chan' para '/home/usuario/Images/mangas'. 
+No linux baixe 'tomo-chan' para '/home/usuario/Images/mangas'.
 
 ### Exemplos de seleção de capitulos
 
