@@ -7,6 +7,20 @@ manga) de forma automatizada e sem restrição de quantidade. Basta
 dizer o nome do manga e selecionar os capitulos que deseja baixar 
 e pronto o script fará os downloads do capitulos selecionados.
 
+#### Atualização
+
+> - Corrigido erro com download de 'Saikin Kono Sekai wa Watashi dake no Mono ni Narimashita......'
+> - Agora é possível pesquisar o nome do manga em japonês, Ex: `dmanga "アイズ"`
+<!-- > **Se acontecer qualquer erro atualize o script/programa (esse erro provalvemente já foi corrigido)**.   -->
+
+> Para atualizar:
+
+> `gem update dmanga`
+
+> E para remover a versão anterior:
+
+> `gem clean`
+
 ## Instalação
 
 ### Windows
@@ -78,6 +92,12 @@ Ex2:
 `dmanga tomo-chan`
 
 Ex3:
+
+Também é possível pesquisar o nome do manga em japonês.
+
+`dmanga "アイズ"`
+
+Ex4:
 <!--![exemplo de uso](https://github.com/david-endrew/somethings/blob/master/uso_exemplo.gif)-->
 ![exemplo de uso](https://github.com/dkeas/somethings/blob/master/uso_exemplo.gif)
 
