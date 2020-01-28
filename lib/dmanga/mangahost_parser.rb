@@ -24,6 +24,8 @@ module DManga
 
     def download
 
+      @options.site = SEARCH_URL.match(%r{.*://(.*)/find/})[1]
+
       # white space is not allowed in the search url.
       guess_manga_name = @options.manga.gsub(/\s/, '+') # Replace ' ' by  '+'
       guess_manga_name = encode_manga_name(guess_manga_name)
