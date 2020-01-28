@@ -9,8 +9,7 @@ e pronto o script fará os downloads do capítulos selecionados.
 
 #### Atualização
 
-> - Corrigido erro com download de 'Saikin Kono Sekai wa Watashi dake no Mono ni Narimashita......'
-> - Agora é possível pesquisar o nome do manga em japonês, Ex: `dmanga "アイズ"`
+> - (2020) Corrigido erro de "execution expired"
 <!-- > **Se acontecer qualquer erro atualize o script/programa (esse erro provalvemente já foi corrigido)**.   -->
 
 > Para atualizar:
