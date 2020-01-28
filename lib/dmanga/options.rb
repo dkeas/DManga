@@ -3,7 +3,8 @@ require 'dmanga/version'
 module DManga
     class Options
         DEFAULT_DOWNLOAD_DIR = "#{ENV['HOME']}/Downloads"
-        attr_reader :download_dir, :verbose, :site, :manga
+        attr_reader :download_dir, :verbose, :manga
+        attr_accessor :site
         def initialize(argv)
             @download_dir = DEFAULT_DOWNLOAD_DIR
             @verbose = false
