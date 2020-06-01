@@ -24,7 +24,7 @@ module DManga
     def parse(url, regex)
       DManga::display_feedback "\nfetching #{url}" if @options.verbose
       result = []
-      open(url, "User-Agent" => USER_AGENT) do |response|
+      URI.open(url, "User-Agent" => USER_AGENT) do |response|
         if response.status[1] == "OK"
           DManga::display_feedback "parsing #{url}" if @options.verbose
           page = response.read
@@ -149,7 +149,7 @@ module DManga
           encoded_url = Addressable::URI.encode(url)
           DManga::display_feedback "\n#{encoded_url}"
           pbar = get_progressbar
-          open(
+          URI.open(
             encoded_url, "User-Agent" => USER_AGENT,
             :progress_proc => lambda {|s| pbar.increment }
           ) do |response|
