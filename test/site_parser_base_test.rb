@@ -131,11 +131,11 @@ class TestSiteParserBase < Minitest::Test
          "Punch!"],
          ["https://mangahost.net/manga/short-program-girls-type",
           "Short Program - Girl's Type"]]
-        $stdin = StringIO.new("n\nn\ns\n") #simulate user input
+        $stdin = StringIO.new("2") #simulate user input
         @site_parser.select_manga(mangas)
         $stdin = STDIN
-        assert_equal @site_parser.manga_url, mangas[2][0]
-        assert_equal @site_parser.manga_name, mangas[2][1]
+        assert_equal @site_parser.manga_url, mangas[1][0]
+        assert_equal @site_parser.manga_name, mangas[1][1]
     end
 
     # test "test select manga when manga was not found" do
@@ -148,7 +148,7 @@ class TestSiteParserBase < Minitest::Test
           "One Punch-Man (One)"],
         ["https://mangahost.net/manga/punch",
          "Punch!"]]
-        $stdin = StringIO.new("n\nn\nn\nn\n") #simulate user input
+        $stdin = StringIO.new("6") #simulate user input
         assert_raises(DManga::MangaNotFoundError) {@site_parser.select_manga(mangas)}
         $stdin = STDIN
     end
