@@ -4,6 +4,8 @@ require 'ruby-progressbar'
 require 'open-uri'
 require 'addressable/uri'
 
+# todo: if downloading returns an error, skip to next chapter
+
 module DManga
   class SiteParserBase
     USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64; rv:76.0) Gecko/20100101 Firefox/76.0"
@@ -52,18 +54,21 @@ module DManga
     def select_manga(mangas)
       puts # just a new line for better output
       unless mangas.empty?
-        mangas.each do |manga|
-          DManga::display_prompt("Você quer baixar #{manga[1]} [s/n]? ")
-          res = $stdin.gets.chomp
-          if res == 's'
-            @manga_url = manga[0]
-            @manga_name = manga[1]
-            break
-          elsif res != 'n'
-            DManga::display_warn("\tOpção invalida")
-            DManga::display_feedback("\tSaindo")
-            exit(true)
+        mangas.each_with_index do |manga, index|
+          DManga::display_feedback "(#{index + 1}) #{manga[1]}"
+        end
+        DManga::display_prompt "Selecionar manga: "
+        res = $stdin.gets.chomp
+        if res =~ /^\d+$/
+          res = res.to_i
+          if res > 0 && res <= mangas.length
+            @manga_name = mangas[res - 1][1]
+            @manga_url = mangas[res - 1][0]
+          else
+            DManga::display_warn("ERRO: Opção inválida")
           end
+        else
+          DManga::display_warn("ERRO: Opção inválida")
         end
       else
         raise MangaNotFoundError, "manga não encontrado"
