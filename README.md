@@ -9,7 +9,7 @@ e pronto o script fará os downloads do capítulos selecionados.
 
 #### Atualização
 
-> - (2020) Corrigido erro de "Geteway timeout"
+> - (2022) Corrigido erro do url que não funciona
 <!-- > **Se acontecer qualquer erro atualize o script/programa (esse erro provalvemente já foi corrigido)**.   -->
 
 > Para atualizar:
