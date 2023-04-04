@@ -9,7 +9,7 @@ e pronto o script fará os downloads do capítulos selecionados.
 
 #### Atualização
 
-> - (2022) Corrigido erro do url que não funciona
+> - (2023) agora é possível selecionar o manga pelo número igual a seleção de capítulos, graças ao Gustavo
 <!-- > **Se acontecer qualquer erro atualize o script/programa (esse erro provalvemente já foi corrigido)**.   -->
 
 > Para atualizar:
