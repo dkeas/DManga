@@ -145,8 +145,10 @@ module DManga
     # download images to path relative to Downloads directory
     def imgs_download(chp_path, imgs_urls)
       imgs_urls.each do |url|
-        original_filename =  url.slice(/(?u)(\w|[_-])+\.(png|jpg)/i)
-
+        original_filename =  url.slice(/(?u)(\w|[_-])+\.(png|jpg|webp|afiv)/i)
+        DManga::display_feedback "nome:'#{original_filename}'" 
+        DManga::display_feedback "url:'#{url}'" 
+        DManga::display_feedback "ch_path:'#{chp_path}'"
         img_path = [@options.download_dir,
                     chp_path,
                     original_filename].join(File::SEPARATOR)
