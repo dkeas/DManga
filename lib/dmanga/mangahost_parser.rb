@@ -74,7 +74,7 @@ module DManga
             # some images urls are incorrect and need to be corrected. For exemple:
             # img.mangahost.net/br/images/img.png.webp => img.mangahost.net/br/mangas_files/img.png
             img.sub!(/images/, "mangas_files")
-            img.sub!(/\.webp/, "")
+            img.sub!(/\.png.webp/, ".png")
 
             #correct créditos img problem
             correct_image_uri(img)
